@@ -1,7 +1,7 @@
 // @desc    verifies login credentials
 // @route   GET /
 const getLoginData = (req, res, next) => {
-  res.send('login controller is good')
+  res.send('GET login data')
 }
 
 // @desc    adds new user info to db

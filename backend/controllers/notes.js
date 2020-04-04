@@ -12,4 +12,10 @@ const getNotes = (req, res, next) => {
   res.json({toDo, toPlan, toDelegate, toDelete})
 };
 
+// @desc    adds new stickee note
+// @desc    POST /:id
+const addNotes = (req, res, next) => {
+  res.send('POST new stickee')
+}
+
 module.exports = { getNotes }

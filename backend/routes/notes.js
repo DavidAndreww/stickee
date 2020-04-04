@@ -2,6 +2,12 @@ const express = require('express')
 const router = express.Router();
 const { getNotes } = require('../controllers/notes')
 
-router.get('/', getNotes)
+router.route('/')
+.get(getNotes)
+
+router.route('/:id')
+.post()
+//may need new route here?
+.delete()
 
 module.exports = router;
