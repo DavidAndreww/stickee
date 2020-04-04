@@ -7,6 +7,8 @@
   border: 1px solid black;
   width: 100vw;
   max-width: 500px;
+  height: 100vh;
+  max-height: 650px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -16,6 +18,15 @@
 .landing-page {
   text-align: center;
 }
+
+/* onboarding css will go here */
+
+.main-display {
+  text-align: center;
+}
+
+
+
 
 /* everything above is organized and in order. Below needs changes */
 .add-sticky-btn {
@@ -28,9 +39,7 @@
   font-size: 40px;
   margin-top: 5px;
 }
-.main-display {
-  text-align: center;
-}
+
 .add-sticky-form {
   position: relative;
   height: 200px;
