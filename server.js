@@ -5,9 +5,11 @@ const colors = require("colors");
 
 dotenv.config({ path: "./backend/config/config.env" });
 
-const router = require('./backend/routes/notes')
+const notesRouter = require('./backend/routes/notes')
+const loginRouter = require('./backend/routes/login')
 
-app.use('/sticky', router)
+app.use('/', loginRouter)
+app.use('/sticky', notesRouter)
 
 const PORT = process.env.PORT || 5000;
 
