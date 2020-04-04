@@ -13,9 +13,15 @@ const getNotes = (req, res, next) => {
 };
 
 // @desc    adds new stickee note
-// @desc    POST /:id
+// @route    POST /:id
 const addNotes = (req, res, next) => {
-  res.send('POST new stickee')
+  res.send('POST a new stickee')
 }
 
-module.exports = { getNotes }
+// @desc    deletes stickee note
+// @route   DELETE /:id
+const deleteNotes = (req, res, next) => {
+  res.send('DELETE a stickee')
+}
+
+module.exports = { getNotes, addNotes, deleteNotes }

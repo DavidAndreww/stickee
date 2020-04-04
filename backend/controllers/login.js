@@ -7,8 +7,7 @@ const getLoginData = (req, res, next) => {
 // @desc    adds new user info to db
 // @route   POST /
 const newUserSignup = (req, res, next) => {
-  res.json(req.body)
-  console.log('req.body')
+  res.send('POST new user data')
 }
 
 module.exports = { getLoginData, newUserSignup }
