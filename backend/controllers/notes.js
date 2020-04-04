@@ -15,7 +15,8 @@ const getNotes = (req, res, next) => {
 // @desc    adds new stickee note
 // @route    POST /:id
 const addNotes = (req, res, next) => {
-  res.send('POST a new stickee')
+  // res.send('POST a new stickee')
+  res.json(req.body)
 }
 
 // @desc    deletes stickee note

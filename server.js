@@ -5,6 +5,8 @@ const colors = require("colors");
 
 dotenv.config({ path: "./backend/config/config.env" });
 
+app.use(express.json());
+
 const notesRouter = require('./backend/routes/notes')
 const loginRouter = require('./backend/routes/login')
 
@@ -15,6 +17,6 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(
-    `Running in ${process.env.NODE_ENV} mode on port ${PORT}`.blue.bold
+    `Running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
   );
 });
