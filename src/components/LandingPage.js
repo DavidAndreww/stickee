@@ -36,7 +36,7 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="landing-page">
         <AuthenticationForm
           handleLoginButtonClick={this.handleLoginButtonClick}
           handleSignupButtonClick={this.handleSignupButtonClick}

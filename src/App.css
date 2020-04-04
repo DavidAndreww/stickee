@@ -1,6 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.app {
+  border: 1px solid black;
+  width: 100vw;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .header {
   text-align: center;
 }
+.landing-page {
+  text-align: center;
+}
+
+
 .add-sticky-btn {
   color: rgb(0, 255, 0);
   background: rgb(34, 177, 76);
@@ -32,12 +49,7 @@
 .switch {
   text-align: center;
 }
-.app {
-  border: 1px solid black;
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 .login-form {
   display: flex;
   flex-direction: column;
