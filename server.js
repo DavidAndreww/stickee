@@ -8,7 +8,7 @@ dotenv.config({ path: "./backend/config/config.env" });
 app.use(express.json());
 
 const notesRouter = require('./backend/routes/notes')
-const loginRouter = require('./backend/routes/login')
+const loginRouter = require('./backend/routes/loginRouter')
 
 app.use('/', loginRouter)
 app.use('/sticky', notesRouter)
