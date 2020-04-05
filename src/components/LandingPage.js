@@ -18,14 +18,23 @@ class LandingPage extends React.Component {
   handleLoginButtonClick = e => {
     e.preventDefault();
     console.log("logging in");
-    this.props.history.push("/sticky");
+    // this.props.history.push("/sticky");
     // logic to check credentials and set cookie
   };
 
   handleSignupButtonClick = e => {
     e.preventDefault();
     console.log("signing up: ", this.state.email);
-    this.props.history.push("/sticky");
+    const newUser = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.email,
+        pass: this.state.password
+      })
+    }
+    console.log(newUser)
+    // this.props.history.push("/sticky");
     // logic to add new user to db and set cookie
   };
 
