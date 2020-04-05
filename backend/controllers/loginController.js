@@ -1,7 +1,7 @@
 const { users } = require('../data')
 // @desc    verifies login credentials
 // @route   GET /
-const getLoginData = (req, res, next) => {
+const userLogin = (req, res, next) => {
   const { email, pass } = req.body;
   console.log(email)
   console.log(pass)
@@ -17,4 +17,4 @@ const newUserSignup = (req, res, next) => {
   res.send(newUser)
 }
 
-module.exports = { getLoginData, newUserSignup }
+module.exports = { userLogin, newUserSignup }
