@@ -31,4 +31,5 @@ const StickeeDisplayComponent = ({ state, removeSticky }) => {
   );
 };
 
+
 export default StickeeDisplayComponent;

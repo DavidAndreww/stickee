@@ -5,6 +5,7 @@ import { Dialog } from "@material-ui/core";
 
 class MainDisplayPage extends React.Component {
   state = {
+    notes: [],
     do: [],
     plan: [],
     delegate: [],
@@ -13,7 +14,7 @@ class MainDisplayPage extends React.Component {
     message: "",
     important: true,
     urgent: true,
-    id: 1
+    id: 1,
   };
 
   addNewStickee = (x, message) => {
@@ -35,10 +36,10 @@ class MainDisplayPage extends React.Component {
     }
   };
 
-  removeSticky = e => {
+  removeSticky = (e) => {
     let id = parseInt(e.target.id);
     let array = this.state[e.target.name];
-    let newArray = array.filter(object => object.id !== id);
+    let newArray = array.filter((object) => object.id !== id);
     this.setState({ [e.target.name]: newArray });
   };
 
@@ -57,18 +58,18 @@ class MainDisplayPage extends React.Component {
     this.setState({ urgent });
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     this.setState({ message: e.target.value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const important = this.state.important;
     const urgent = this.state.urgent;
     let id = this.state.id;
     const newMessage = {
       message: this.state.message,
-      id: id
+      id: id,
     };
     important && urgent && this.addNewStickee("do", newMessage);
     important && !urgent && this.addNewStickee("plan", newMessage);
@@ -78,11 +79,48 @@ class MainDisplayPage extends React.Component {
     this.setState({ message: "", id: id + 1 });
   };
 
+  handleSubmit2 = (e) => {
+    e.preventDefault();
+    const notes = this.state.notes;
+    console.log(notes)
+    const urgent = this.state.urgent;
+    const important = this.state.important;
+    const id = this.state.id;
+    let type;
+
+    if (important) {
+      if (urgent) {
+        type = "do";
+      } else {
+        type = "plan";
+      }
+    }
+    if (!important) {
+      if (urgent) {
+        type = "delegate";
+      } else {
+        type = "delete";
+      }
+    }
+    const newNote = {
+      id: id,
+      type: type,
+      message: this.state.message
+    }
+    this.setState({
+      notes: [ ...notes, newNote ],
+      message: '',
+      id: id + 1
+    })
+    this.toggleAddStickyForm();
+  };
+
   render() {
     return (
       <div className="main-display">
         <StickeeDisplayComponent
           state={{ ...this.state }}
+          notes={this.state.notes}
           removeSticky={this.removeSticky}
         />
         <Dialog open={this.state.stickyFormOpen}>
