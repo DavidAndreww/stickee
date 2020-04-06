@@ -79,41 +79,41 @@ class MainDisplayPage extends React.Component {
     this.setState({ message: "", id: id + 1 });
   };
 
-  handleSubmit2 = (e) => {
-    e.preventDefault();
-    const notes = this.state.notes;
-    console.log(notes)
-    const urgent = this.state.urgent;
-    const important = this.state.important;
-    const id = this.state.id;
-    let type;
+  // handleSubmit2 = (e) => {
+  //   e.preventDefault();
+  //   const notes = this.state.notes;
+  //   console.log(notes)
+  //   const urgent = this.state.urgent;
+  //   const important = this.state.important;
+  //   const id = this.state.id;
+  //   let type;
 
-    if (important) {
-      if (urgent) {
-        type = "do";
-      } else {
-        type = "plan";
-      }
-    }
-    if (!important) {
-      if (urgent) {
-        type = "delegate";
-      } else {
-        type = "delete";
-      }
-    }
-    const newNote = {
-      id: id,
-      type: type,
-      message: this.state.message
-    }
-    this.setState({
-      notes: [ ...notes, newNote ],
-      message: '',
-      id: id + 1
-    })
-    this.toggleAddStickyForm();
-  };
+  //   if (important) {
+  //     if (urgent) {
+  //       type = "do";
+  //     } else {
+  //       type = "plan";
+  //     }
+  //   }
+  //   if (!important) {
+  //     if (urgent) {
+  //       type = "delegate";
+  //     } else {
+  //       type = "delete";
+  //     }
+  //   }
+  //   const newNote = {
+  //     id: id,
+  //     type: type,
+  //     message: this.state.message
+  //   }
+  //   this.setState({
+  //     notes: [ ...notes, newNote ],
+  //     message: '',
+  //     id: id + 1
+  //   })
+  //   this.toggleAddStickyForm();
+  // };
 
   render() {
     return (
