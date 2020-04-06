@@ -6,10 +6,6 @@ import { Dialog } from "@material-ui/core";
 class MainDisplayPage extends React.Component {
   state = {
     notes: [],
-    do: [],
-    plan: [],
-    delegate: [],
-    delete: [],
     stickyFormOpen: false,
     message: "",
     important: true,
@@ -17,30 +13,11 @@ class MainDisplayPage extends React.Component {
     id: 1,
   };
 
-  addNewStickee = (x, message) => {
-    switch (x) {
-      case "do":
-        this.setState({ do: [...this.state.do, message] });
-        break;
-      case "plan":
-        this.setState({ plan: [...this.state.plan, message] });
-        break;
-      case "delegate":
-        this.setState({ delegate: [...this.state.delegate, message] });
-        break;
-      case "delete":
-        this.setState({ delete: [...this.state.delete, message] });
-        break;
-      default:
-        console.log("oops");
-    }
-  };
-
   removeSticky = (e) => {
     let id = parseInt(e.target.id);
-    let array = this.state[e.target.name];
+    let array = this.state.notes;
     let newArray = array.filter((object) => object.id !== id);
-    this.setState({ [e.target.name]: newArray });
+    this.setState({ notes: newArray });
   };
 
   toggleAddStickyForm = () => {
@@ -64,56 +41,39 @@ class MainDisplayPage extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const important = this.state.important;
+    const notes = this.state.notes;
     const urgent = this.state.urgent;
-    let id = this.state.id;
-    const newMessage = {
-      message: this.state.message,
+    const important = this.state.important;
+    const id = this.state.id;
+    let type;
+
+    if (important) {
+      if (urgent) {
+        type = "do";
+      } else {
+        type = "plan";
+      }
+    }
+    if (!important) {
+      if (urgent) {
+        type = "delegate";
+      } else {
+        type = "delete";
+      }
+    }
+    const newNote = {
       id: id,
-    };
-    important && urgent && this.addNewStickee("do", newMessage);
-    important && !urgent && this.addNewStickee("plan", newMessage);
-    !important && urgent && this.addNewStickee("delegate", newMessage);
-    !important && !urgent && this.addNewStickee("delete", newMessage);
+      type: type,
+      message: this.state.message
+    }
+    console.log(newNote)
+    this.setState({
+      notes: [ ...notes, newNote ],
+      message: '',
+      id: id + 1
+    })
     this.toggleAddStickyForm();
-    this.setState({ message: "", id: id + 1 });
   };
-
-  // handleSubmit2 = (e) => {
-  //   e.preventDefault();
-  //   const notes = this.state.notes;
-  //   console.log(notes)
-  //   const urgent = this.state.urgent;
-  //   const important = this.state.important;
-  //   const id = this.state.id;
-  //   let type;
-
-  //   if (important) {
-  //     if (urgent) {
-  //       type = "do";
-  //     } else {
-  //       type = "plan";
-  //     }
-  //   }
-  //   if (!important) {
-  //     if (urgent) {
-  //       type = "delegate";
-  //     } else {
-  //       type = "delete";
-  //     }
-  //   }
-  //   const newNote = {
-  //     id: id,
-  //     type: type,
-  //     message: this.state.message
-  //   }
-  //   this.setState({
-  //     notes: [ ...notes, newNote ],
-  //     message: '',
-  //     id: id + 1
-  //   })
-  //   this.toggleAddStickyForm();
-  // };
 
   render() {
     return (

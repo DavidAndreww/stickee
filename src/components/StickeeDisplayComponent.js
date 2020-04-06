@@ -12,7 +12,7 @@ const StickeeDisplayComponent = ({ notes, removeSticky }) => {
             <StickeeNote
               key={note.id}
               id={note.id}
-              group={priority}
+              priority={priority}
               message={note.message}
               removeSticky={removeSticky}
             />

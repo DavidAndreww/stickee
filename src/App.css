@@ -76,7 +76,7 @@
 }
 .do .sticky {
   background-color:  rgb(245, 131, 136);
-  border: 2px solid rgb(237, 28, 36);
+  border: 3px solid rgb(237, 28, 36);
   width: 50px;
   height: 50px;
   font-size: 10px;
@@ -86,7 +86,7 @@
 }
 .plan .sticky {
   background-color: rgb(115, 213, 255);
-  border: 2px solid rgb(63, 72, 204);
+  border: 3px solid rgb(63, 72, 204);
   width: 50px;
   height: 50px;
   font-size: 10px;
@@ -96,7 +96,7 @@
 }
 .delegate .sticky {
   background-color: rgb(255, 248, 115);
-  border: 2px solid rgb(255, 242, 0);
+  border: 3px solid rgb(255, 242, 0);
   width: 50px;
   height: 50px;
   font-size: 10px;
@@ -106,7 +106,7 @@
 }
 .delete .sticky {
   background-color: rgb(203, 155, 129);
-  border: 2px solid rgb(136, 0, 21);
+  border: 3px solid rgb(136, 0, 21);
   width: 50px;
   height: 50px;
   font-size: 10px;
