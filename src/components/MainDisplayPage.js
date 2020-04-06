@@ -66,7 +66,6 @@ class MainDisplayPage extends React.Component {
       type: type,
       message: this.state.message
     }
-    console.log(newNote)
     this.setState({
       notes: [ ...notes, newNote ],
       message: '',

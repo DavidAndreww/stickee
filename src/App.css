@@ -29,6 +29,10 @@
 
 
 /* everything above is organized and in order. Below needs changes */
+
+.add-sticky-dialog {
+  text-align: center;
+}
 .add-sticky-btn {
   color: rgb(0, 255, 0);
   background: rgb(34, 177, 76);
