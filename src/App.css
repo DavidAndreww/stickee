@@ -45,9 +45,9 @@
 }
 
 .add-sticky-form {
-  position: relative;
+  /* position: relative; */
   height: 200px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
 }
 .add-sticky-form-left,
