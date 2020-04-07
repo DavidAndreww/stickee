@@ -61,6 +61,14 @@ class MainDisplayPage extends React.Component {
         type = "delete";
       }
     }
+    let totalNotes = notes.filter(notes => notes.type === type)
+  
+    if (totalNotes.length >= 6){
+      window.alert(`Finish some of your "${type}" tasks before adding more! `)
+      this.toggleAddStickyForm()
+      return false
+    }
+  
     const newNote = {
       id: id,
       type: type,

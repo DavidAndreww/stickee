@@ -66,8 +66,9 @@
   height: 50px;
   font-size: 10px;
   text-align: center;
-  margin: 2px;
-  overflow-wrap: break-word
+  margin: 5px;
+  overflow-wrap: break-word;
+  box-shadow: 0px 2px 4px #5C6369;
 }
 .do .sticky {
   background-color:  rgb(245, 131, 136);
