@@ -33,6 +33,9 @@
 .add-sticky-dialog {
   text-align: center;
 }
+.add-sticky-dialog .back-btn {
+  width: 100%;
+}
 .add-sticky-btn {
   color: rgb(0, 255, 0);
   background: rgb(34, 177, 76);
@@ -45,15 +48,16 @@
 }
 
 .add-sticky-form {
-  /* position: relative; */
   height: 200px;
-  /* border: 1px solid black; */
   display: flex;
+}
+.add-sticky-form textarea {
+  width: 100%;
 }
 .add-sticky-form-left,
 .add-sticky-form-right {
   width: 50%;
-  padding: 5px;
+  padding: 8px;
 }
 .add-sticky-form-right {
   display: flex;

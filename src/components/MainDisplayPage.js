@@ -78,7 +78,6 @@ class MainDisplayPage extends React.Component {
     return (
       <div className="main-display">
         <StickeeDisplayComponent
-          state={{ ...this.state }}
           notes={this.state.notes}
           removeSticky={this.removeSticky}
         />

@@ -44,7 +44,7 @@ const AddStickyForm = ({
           <button type="submit">Stick It!</button>
         </div>
       </form>
-      <button onClick={toggleAddStickyForm}>Back</button>
+      <button className="back-btn" onClick={toggleAddStickyForm}>Back</button>
     </div>
   );
 };
