@@ -12,13 +12,13 @@ const AddStickyForm = ({
   toggleAddStickyForm
 }) => {
   return (
-    <div className="add-sticky-dialog">
-      <form className="add-sticky-form" onSubmit={handleSubmit}>
-        <div className="add-sticky-form-left">
+    <div className="add-sticky-dialog-component">
+      <form className="add-sticky-form-wrap" onSubmit={handleSubmit}>
+        <div className="form-left-side">
           <label>I need to....</label>
           <textarea rows="5" value={message} onChange={handleInputChange} />
         </div>
-        <div className="add-sticky-form-right">
+        <div className="form-right-side">
           <div className="switch">
             <label>Is it important?</label>
             <br />
@@ -44,7 +44,7 @@ const AddStickyForm = ({
           <button type="submit">Stick It!</button>
         </div>
       </form>
-      <button className="back-btn" onClick={toggleAddStickyForm}>Back</button>
+      <button className="sticky-form-back-btn" onClick={toggleAddStickyForm}>Back</button>
     </div>
   );
 };

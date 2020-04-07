@@ -76,7 +76,7 @@ class MainDisplayPage extends React.Component {
 
   render() {
     return (
-      <div className="main-display">
+      <div className="main-display-component">
         <StickeeDisplayComponent
           notes={this.state.notes}
           removeSticky={this.removeSticky}
@@ -93,7 +93,7 @@ class MainDisplayPage extends React.Component {
             message={this.state.message}
           />
         </Dialog>
-        <button onClick={this.toggleAddStickyForm} className="add-sticky-btn">
+        <button onClick={this.toggleAddStickyForm} className="toggle-dialog-btn">
           +
         </button>
       </div>

@@ -16,82 +16,76 @@
 }
 
 /** header component **/
-.header {
+.header-display-component {
   text-align: center;
 }
 
 /** wraps entire '/' path **/
-.landing-page {
+.landing-page-component {
   text-align: center;
 }
 
-/* onboarding css will go here */
-
-
-/* wraps entire '/sticky' path */
-.main-display {
-  text-align: center;
-}
 .login-form {
   display: flex;
   flex-direction: column;
 }
+/* onboarding css will go here */
+
+
+/* wraps entire '/sticky' path */
+.main-display-component {
+  text-align: center;
+}
 
 /*  */
-.priority-field {
+.priority-display-field-container {
   border: 1px solid black;
   display: grid;
   grid-template-columns: 250px 250px;
   grid-template-rows: 250px 250px;
 }
 
-.single-priority-display-field {
+.individual-priority-display-field {
   border: 1px solid black;
 }
 
-/*  */
-.do .sticky {
-  background-color:  rgb(245, 131, 136);
-  border: 3px solid rgb(237, 28, 36);
+/* styles each individual stickee note by priority level  */
+.do,
+.plan,
+.delegate,
+.delete{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sticky {
   width: 50px;
   height: 50px;
   font-size: 10px;
   text-align: center;
   margin: 2px;
-  overflow-wrap: break-word;
+  overflow-wrap: break-word
+}
+.do .sticky {
+  background-color:  rgb(245, 131, 136);
+  border: 3px solid rgb(237, 28, 36);
 }
 .plan .sticky {
   background-color: rgb(115, 213, 255);
   border: 3px solid rgb(63, 72, 204);
-  width: 50px;
-  height: 50px;
-  font-size: 10px;
-  text-align: center;
-  margin: 2px;
-  overflow-wrap: break-word;
 }
 .delegate .sticky {
   background-color: rgb(255, 248, 115);
   border: 3px solid rgb(255, 242, 0);
-  width: 50px;
-  height: 50px;
-  font-size: 10px;
-  text-align: center;
-  margin: 2px;
-  overflow-wrap: break-word;
 }
 .delete .sticky {
   background-color: rgb(203, 155, 129);
   border: 3px solid rgb(136, 0, 21);
-  width: 50px;
-  height: 50px;
-  font-size: 10px;
-  text-align: center;
-  margin: 2px;
-  overflow-wrap: break-word;
 }
-
-.add-sticky-btn {
+.toggle-dialog-btn {
   color: rgb(0, 255, 0);
   background: rgb(34, 177, 76);
   border: 2px solid rgb(0, 255, 0);
@@ -102,38 +96,30 @@
   margin-top: 5px;
 }
 
-
-
-
-
-
-
-
 /* wraps entire popup dialog box */
-.add-sticky-dialog {
+.add-sticky-dialog-component {
   text-align: center;
 }
-
-.add-sticky-form {
+.add-sticky-form-wrap {
   height: 200px;
   display: flex;
 }
-.add-sticky-form-left,
-.add-sticky-form-right {
+.form-left-side,
+.form-right-side {
   width: 50%;
   padding: 8px;
 }
-.add-sticky-form-right {
+.form-right-side {
   display: flex;
   flex-direction: column;
 }
-.add-sticky-form textarea {
+.add-sticky-form-wrap textarea {
   width: 100%;
 }
-.add-sticky-form .switch {
+ .switch {
   text-align: center;
 }
-.add-sticky-dialog .back-btn {
+.sticky-form-back-btn {
   width: 100%;
 }
 

@@ -5,7 +5,7 @@ const StickeeDisplayComponent = ({ notes, removeSticky }) => {
   const StickeeDisplay = ({ notes, priority }) => {
     const array = notes.filter((note) => note.type === priority);
     return (
-      <div className="single-priority-display-field">
+      <div className="individual-priority-display-field">
         <h5>{priority}</h5>
         <div className={priority}>
           {array.map((note) => (
@@ -23,7 +23,7 @@ const StickeeDisplayComponent = ({ notes, removeSticky }) => {
   };
 
   return (
-    <div className="priority-field">
+    <div className="priority-display-field-container">
       <StickeeDisplay notes={notes} priority="do" />
       <StickeeDisplay notes={notes} priority="plan" />
       <StickeeDisplay notes={notes} priority="delegate" />
