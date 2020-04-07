@@ -3,6 +3,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/** wraps entire application **/
 .app {
   border: 1px solid black;
   width: 100vw;
@@ -12,76 +14,42 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/** header component **/
 .header {
   text-align: center;
 }
+
+/** wraps entire '/' path **/
 .landing-page {
   text-align: center;
 }
 
 /* onboarding css will go here */
 
+
+/* wraps entire '/sticky' path */
 .main-display {
   text-align: center;
 }
-
-
-
-
-/* everything above is organized and in order. Below needs changes */
-
-.add-sticky-dialog {
-  text-align: center;
-}
-.add-sticky-dialog .back-btn {
-  width: 100%;
-}
-.add-sticky-btn {
-  color: rgb(0, 255, 0);
-  background: rgb(34, 177, 76);
-  border: 2px solid rgb(0, 255, 0);
-  width: 100%;
-  height: 50px;
-  max-height: 50px;
-  font-size: 40px;
-  margin-top: 5px;
-}
-
-.add-sticky-form {
-  height: 200px;
-  display: flex;
-}
-.add-sticky-form textarea {
-  width: 100%;
-}
-.add-sticky-form-left,
-.add-sticky-form-right {
-  width: 50%;
-  padding: 8px;
-}
-.add-sticky-form-right {
-  display: flex;
-  flex-direction: column;
-}
-.switch {
-  text-align: center;
-}
-
 .login-form {
   display: flex;
   flex-direction: column;
 }
+
+/*  */
 .priority-field {
   border: 1px solid black;
   display: grid;
   grid-template-columns: 250px 250px;
   grid-template-rows: 250px 250px;
 }
-.sticky-box {
+
+.single-priority-display-field {
   border: 1px solid black;
-  /* display: flex; */
-  
 }
+
+/*  */
 .do .sticky {
   background-color:  rgb(245, 131, 136);
   border: 3px solid rgb(237, 28, 36);
@@ -122,3 +90,53 @@
   margin: 2px;
   overflow-wrap: break-word;
 }
+
+.add-sticky-btn {
+  color: rgb(0, 255, 0);
+  background: rgb(34, 177, 76);
+  border: 2px solid rgb(0, 255, 0);
+  width: 100%;
+  height: 50px;
+  max-height: 50px;
+  font-size: 40px;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+/* wraps entire popup dialog box */
+.add-sticky-dialog {
+  text-align: center;
+}
+
+.add-sticky-form {
+  height: 200px;
+  display: flex;
+}
+.add-sticky-form-left,
+.add-sticky-form-right {
+  width: 50%;
+  padding: 8px;
+}
+.add-sticky-form-right {
+  display: flex;
+  flex-direction: column;
+}
+.add-sticky-form textarea {
+  width: 100%;
+}
+.add-sticky-form .switch {
+  text-align: center;
+}
+.add-sticky-dialog .back-btn {
+  width: 100%;
+}
+
+
+
+

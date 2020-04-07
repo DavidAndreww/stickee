@@ -5,7 +5,7 @@ const StickeeDisplayComponent = ({ notes, removeSticky }) => {
   const StickeeDisplay = ({ notes, priority }) => {
     const array = notes.filter((note) => note.type === priority);
     return (
-      <div className="sticky-box">
+      <div className="single-priority-display-field">
         <h5>{priority}</h5>
         <div className={priority}>
           {array.map((note) => (
