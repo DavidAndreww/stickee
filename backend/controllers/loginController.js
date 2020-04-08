@@ -3,7 +3,7 @@ const { users } = require("../data");
 // @route   GET /
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
-  let [user] = users.filter((user) => user.email === email);
+  let user = users.find((user) => user.email === email);
   console.log(user)
   if (!user){
     res.status(404).send(`Email "${email}" doesn't exist.`)
