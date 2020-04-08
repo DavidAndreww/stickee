@@ -1,28 +1,17 @@
 DROP TABLE IF EXISTS users, notes;
 
--- CREATE TABLE users
--- (
---   id INT NOT NULL
---   AUTO_INCREMENT,
---   email VARCHAR
---   (50),
---   password VARCHAR
---   (50),
---   PRIMARY KEY
---   (id)
--- );
+CREATE TABLE users (
+  id INT(1) NOT NULL, 
+  email VARCHAR(255),
+  pass_word VARCHAR(255),
+  PRIMARY KEY (id)
+);
 
--- CREATE TABLE notes
---   (
---     id INT NOT NULL
---     AUTO_INCREMENT,
---   id INT NOT NULL,
---   message VARCHAR
---     (50),
---   type VARCHAR
---     (10)
---   REFERENCES users
---     (id)
---     ON
---     DELETE CASCADE
--- );
+CREATE TABLE notes(
+  id INT NOT NULL,
+  note_id INT NOT NULL,
+  note_message VARCHAR(255),
+  note_type VARCHAR(255),
+  PRIMARY KEY(id),
+  REFERENCES users(id)
+);
