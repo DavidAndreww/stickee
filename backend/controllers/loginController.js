@@ -14,8 +14,6 @@ const userLogin = (req, res, next) => {
   } else {
     res.status(404).send(`Incorrect password`)
   }
-  console.log('hi')
-
 };
 
 // @desc    adds new user info to db
