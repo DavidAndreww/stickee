@@ -4,11 +4,12 @@ const { users } = require("../data");
 const userLogin = (req, res, next) => {
   const { email, pass } = req.body;
   try {
-    let found = users.filter((user) => user.email === email) ? 'true': 'false';
-    console.log(found)
-
+    let found = users.filter((user) => user.email === email);
+    found.length > 0 && res.send("hi");
+    found.length === 0 && res.status(200).send("User not available");
+    console.log(found);
   } catch (error) {
-    res.status(500).send(error);
+    throw error;
   }
 };
 
