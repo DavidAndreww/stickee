@@ -1,13 +1,20 @@
 const data = [
   {
     id: 1,
-    arrays: {
-      do: [],
-      plan: [],
-      delgate: [],
-      delete: [],
-    },
+    notes:[]
   },
+  {
+    id: 2,
+    notes:[]
+  },
+  {
+    id: 3,
+    notes:[]
+  },
+  {
+    id: 4,
+    notes:[]
+  }
 ];
 
 const users = [

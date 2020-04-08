@@ -3,8 +3,8 @@ const { users } = require('../data')
 // @route   GET /
 const userLogin = (req, res, next) => {
   const { email, pass } = req.body;
-  console.log(email)
-  console.log(pass)
+  console.log('email: ', email)
+  console.log('pass: ', pass)
   res.send(req.body)
 }
 
