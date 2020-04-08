@@ -26,6 +26,7 @@ class LandingPage extends React.Component {
         pass: this.state.password
       })
     }
+    // needs to be async
     .fetch("localhost:5005/")
     .then(res => console.log(res.json()))
     console.log(userInfo)
