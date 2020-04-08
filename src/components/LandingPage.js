@@ -53,6 +53,7 @@ class LandingPage extends React.Component {
   toggleNewUserView = () => {
     const isNewUser = !this.state.isNewUser
     this.setState({isNewUser})
+    this.props.history.push('/signup')
   }
 
   render() {

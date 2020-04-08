@@ -24,6 +24,7 @@ const Router = () => {
   return (
     <Switch>
       <Route exact path="/" component={LandingPage} />
+      <Route exact path="/signup" component={LandingPage} />
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/sticky" component={MainDisplayPage} />
     </Switch>
