@@ -26,6 +26,8 @@ class LandingPage extends React.Component {
         pass: this.state.password
       })
     }
+    .fetch("localhost:5005/")
+    .then(res => console.log(res.json()))
     console.log(userInfo)
     // this.props.history.push("/sticky");
     // logic to check credentials and set cookie
