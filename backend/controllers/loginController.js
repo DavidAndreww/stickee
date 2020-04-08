@@ -2,15 +2,19 @@ const { users } = require("../data");
 // @desc    verifies login credentials
 // @route   GET /
 const userLogin = (req, res, next) => {
-  const { email, pass } = req.body;
-  try {
-    let found = users.filter((user) => user.email === email);
-    found.length > 0 && res.send("hi");
-    found.length === 0 && res.status(200).send("User not available");
-    console.log(found);
-  } catch (error) {
-    throw error;
+  const { email, password } = req.body;
+  let user = users.filter((user) => user.email === email)[0];
+  if (!user){
+    res.status(404).send(`Email "${email}" doesn't exist.`)
+    return;
   }
+  if (user.password === password){
+    res.status(200).send(`Welcome, ${email}`)
+  } else {
+    res.status(404).send(`Incorrect password`)
+  }
+  console.log('hi')
+
 };
 
 // @desc    adds new user info to db
