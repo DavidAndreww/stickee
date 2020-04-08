@@ -52,8 +52,13 @@ class LandingPage extends React.Component {
 
   toggleNewUserView = () => {
     const isNewUser = !this.state.isNewUser
-    this.setState({isNewUser})
-    this.props.history.push('/signup')
+    if (isNewUser) {
+      this.setState({isNewUser})
+      this.props.history.push('/signup')
+    } else {
+      this.setState({isNewUser})
+      this.props.history.push('/')
+    }
   }
 
   render() {
@@ -67,11 +72,17 @@ class LandingPage extends React.Component {
           password={this.state.password}
           isNewUser={this.state.isNewUser}
         />
-        {!this.state.isNewUser && (
+        {!this.state.isNewUser ? (
           <Button 
           onClick={this.toggleNewUserView}
           color="secondary" variant="contained">
             Sign Up
+          </Button>
+        ) : (
+          <Button 
+          onClick={this.toggleNewUserView}
+          color="secondary" variant="contained">
+            Login
           </Button>
         )}
       </div>
