@@ -7,7 +7,7 @@ dotenv.config({ path: "./backend/config/config.env" });
 
 app.use(express.json());
 
-const notesRouter = require('./backend/routes/notes')
+const notesRouter = require('./backend/routes/notesRouter')
 const loginRouter = require('./backend/routes/loginRouter')
 
 app.use('/', loginRouter)
