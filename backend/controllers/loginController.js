@@ -24,13 +24,15 @@ const userLogin = (req, res, next) => {
 // @route   POST /
 const newUserSignup = (req, res, next) => {
   let { email, password } = req.body;
-  let sql = "INSERT INTO users (email, _password) VALUES (??, ??)";
-  const userInput = [
-    `${email}`,
-    `${password}`,
-  ];
-  sql = mysql.format(sql, [userInput]);
-  // res.send(sql)
+  email = email.split('.').join('')
+  console.log(email)
+  console.log(password)
+
+  let sql = 'INSERT INTO users (email, _password) VALUES (??, ??, ??)'
+  const replacements = [`${email}`, `${password}`]
+  sql = mysql.format(sql, replacements)
+  
+  
 
   pool.query(sql, (err, results) => {
     if (err) return handleSQLError(res, err);
