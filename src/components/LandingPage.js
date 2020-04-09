@@ -36,7 +36,10 @@ class LandingPage extends React.Component {
 
   handleSignupButtonClick = e => {
     e.preventDefault();
+    const url = '/sticky'
+
     console.log("signing up: ", this.state.email);
+    
     const newUser = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -45,9 +48,16 @@ class LandingPage extends React.Component {
         pass: this.state.password
       })
     }
+    fetch(url, newUser)
+    .then((res)=>{
+      console.log(res.json())
+    })
+    // .then(response => {console.log(response)})
     console.log(newUser)
+
+
     // this.props.history.push("/sticky");
-    // logic to add new user to db and set cookie
+
   };
 
   toggleNewUserView = () => {
