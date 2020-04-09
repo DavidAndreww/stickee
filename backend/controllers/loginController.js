@@ -28,18 +28,27 @@ const newUserSignup = (req, res, next) => {
   console.log(email)
   console.log(password)
 
-  let sql = 'INSERT INTO users (email, _password) VALUES (??, ??, ??)'
-  const replacements = [`${email}`, `${password}`]
+  let sql = 'INSERT INTO users (email, _password) VALUES (??, ??)'
+  const replacements = ['dbaryoa','123']
   sql = mysql.format(sql, replacements)
+  // res.json({msg: sql})
   
   
 
-  pool.query(sql, (err, results) => {
-    if (err) return handleSQLError(res, err);
-    return res.status(201).json({
-      message: "User Successfully Created",
-      new_user: results,
-    });
+  // pool.query(sql, (err, results) => {
+  //   if (err) return handleSQLError(res, err);
+  //   return res.status(201).json({
+  //     message: "User Successfully Created",
+  //     new_user: results,
+  //   });
+  // });
+
+  pool.query(sql, (err, rows) => {
+    if (err) {
+      console.log({ 'message': 'Error occurred: ' + err })
+      return res.status(500).send('An unexpected error occured')
+    }
+    res.json(rows)
   });
 };
 
