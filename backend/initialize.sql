@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS users, notes;
 
 CREATE TABLE users (
-  id INT NOT NULL IDENTITY(1,1), 
+  id INT NOT NULL AUTO_INCREMENT, 
   email VARCHAR(255),
   _password VARCHAR(255),
   PRIMARY KEY (id)

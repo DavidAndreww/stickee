@@ -8,7 +8,7 @@ const { handleSQLError } = require("../sql/error");
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
   let user = users.find((user) => user.email === email);
-  console.log(user);
+  console.log('userLogin: "/"')
   if (!user) {
     res.status(404).send(`Email "${email}" doesn't exist.`);
     return;
@@ -24,26 +24,21 @@ const userLogin = (req, res, next) => {
 // @route   POST /
 const newUserSignup = (req, res, next) => {
   let { email, password } = req.body;
-  console.log("connected: ", req.body);
-  let sql = "INSERT INTO ?? ( ??, ??) VALUES (??, ??)";
+  let sql = "INSERT INTO users (email, _password) VALUES (??, ??)";
   const userInput = [
-    "users",
-    "email",
-    "_password",
     `${email}`,
     `${password}`,
   ];
-  console.log(sql)
-  sql = mysql.format(sql, userInput);
-  res.send('sql format: ',sql)
+  sql = mysql.format(sql, [userInput]);
+  // res.send(sql)
 
-  // pool.query(sql, (err, results) => {
-  //   if (err) return handleSQLError(res, err);
-  //   return res.status(201).json({
-  //     message: "User Successfully Created",
-  //     new_user: results,
-  //   });
-  // });
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err);
+    return res.status(201).json({
+      message: "User Successfully Created",
+      new_user: results,
+    });
+  });
 };
 
 module.exports = { userLogin, newUserSignup };
