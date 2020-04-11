@@ -21,12 +21,13 @@ const AuthenticationForm = ({
   handleLoginButtonClick,
   handleSignupButtonClick,
   handleInputChange,
+  toggleNewUserView,
   email,
   password,
   isNewUser
 }) => {
   return (
-    <Container maxWidth="xs">
+    <Container className="landing-page-component" maxWidth="xs">
       <form
         onSubmit={isNewUser ? handleSignupButtonClick : handleLoginButtonClick}
         className="login-form"
@@ -49,6 +50,21 @@ const AuthenticationForm = ({
         />
         {isNewUser ? <SignupButton /> : <LoginButton />}
       </form>
+      {isNewUser ? <Button
+            onClick={toggleNewUserView}
+            color="secondary"
+            variant="contained"
+          >
+            Back To Login
+          </Button>
+         : 
+          <Button
+            onClick={toggleNewUserView}
+            color="secondary"
+            variant="contained"
+          >
+             Create User
+          </Button>}
     </Container>
   );
 };
