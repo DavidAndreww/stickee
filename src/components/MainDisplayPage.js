@@ -90,7 +90,7 @@ class MainDisplayPage extends React.Component {
           removeSticky={this.removeSticky}
         />
         <AddStickyForm
-          stickyFormOpen={this.stickyFormOpen}
+          stickyFormOpen={this.state.stickyFormOpen}
           toggleAddStickyForm={this.toggleAddStickyForm}
           handleInputChange={this.handleInputChange}
           handleUrgentSwitch={this.handleUrgentSwitch}
