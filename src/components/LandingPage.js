@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import AuthenticationForm from "./AuthenticationForm";
+import { fetchData } from '../helperFunctions'
 
 class LandingPage extends React.Component {
   state = {
@@ -15,12 +16,12 @@ class LandingPage extends React.Component {
     this.setState(state);
   };
 
-  fetchData = async function (path, payload){
-    const response = await fetch(path, payload)
-    const json = await response.json()
-    console.log(json)
-    // return that cookie?
-  }
+  // fetchData = async function (path, payload){
+  //   const response = await fetch(path, payload)
+  //   const json = await response.json()
+  //   console.log(json)
+  //   // return that cookie?
+  // }
 
   handleLoginButtonClick = (e) => {
     e.preventDefault();
@@ -33,7 +34,7 @@ class LandingPage extends React.Component {
         password: this.state.password,
       }),
     };
-    this.fetchData('/', userInfo)
+    fetchData('/', userInfo)
   };
 
   handleSignupButtonClick = (e) => {
@@ -46,7 +47,7 @@ class LandingPage extends React.Component {
         password: this.state.password,
       }),
     };
-    this.fetchData('/signup', newUser)
+    fetchData('/signup', newUser)
   };
 
   toggleNewUserView = () => {
