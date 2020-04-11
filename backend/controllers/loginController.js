@@ -8,7 +8,7 @@ const { handleSQLError } = require("../sql/error");
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
   let user = users.find((user) => user.email === email);
-  res.send(email)
+  res.json({welcome: email})
   // if (!user) {
   //   res.status(404).send(`Email "${email}" doesn't exist.`);
   //   return;

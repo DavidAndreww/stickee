@@ -26,8 +26,10 @@ class LandingPage extends React.Component {
         password: this.state.password,
       }),
     };
-    fetch("/").then((res) => console.log(res.json()));
-    console.log(userInfo);
+    fetch('/', userInfo)
+    .then(res => res.json())
+    .then(json => console.log(json))
+   
   };
 
   handleSignupButtonClick = (e) => {
@@ -44,11 +46,7 @@ class LandingPage extends React.Component {
         pass: this.state.password,
       }),
     };
-    fetch(url, newUser).then((res) => {
-      console.log(res.json());
-    });
-    // .then(response => {console.log(response)})
-    console.log(newUser);
+
 
     // this.props.history.push("/sticky");
   };
