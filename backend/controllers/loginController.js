@@ -19,7 +19,13 @@ const userLogin = (req, res, next) => {
 const newUserSignup = (req, res, next) => {
   let { email, password } = req.body;
   email = email.split(".").join("");
-  res.json(`New user created: ${req.body.email}`)
+  res.json({
+    message: "New user created",
+    user: {
+      email: req.body.email,
+      password: password,
+    },
+  });
 
   // let sql = 'INSERT INTO users (email, _password) VALUES (??, ??)'
   // const replacements = ['dbaryoa','123']

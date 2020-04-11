@@ -43,7 +43,7 @@ class LandingPage extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.email,
-        pass: this.state.password,
+        password: this.state.password,
       }),
     };
     this.fetchData('/signup', newUser)
