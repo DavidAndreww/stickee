@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import AuthenticationForm from "./AuthenticationForm";
+import AuthFormComponent from "./AuthFormComponent";
 import { fetchData } from "../helperFunctions";
 
 class LandingPage extends React.Component {
@@ -14,6 +14,17 @@ class LandingPage extends React.Component {
     const state = { ...this.state };
     state[e.target.name] = e.target.value;
     this.setState(state);
+  };
+
+  toggleNewUserView = () => {
+    const isNewUser = !this.state.isNewUser;
+    if (isNewUser) {
+      this.setState({ isNewUser });
+      this.props.history.push("/signup");
+    } else {
+      this.setState({ isNewUser });
+      this.props.history.push("/");
+    }
   };
 
   handleLoginButtonClick = (e) => {
@@ -40,20 +51,9 @@ class LandingPage extends React.Component {
     });
   };
 
-  toggleNewUserView = () => {
-    const isNewUser = !this.state.isNewUser;
-    if (isNewUser) {
-      this.setState({ isNewUser });
-      this.props.history.push("/signup");
-    } else {
-      this.setState({ isNewUser });
-      this.props.history.push("/");
-    }
-  };
-
   render() {
     return (
-      <AuthenticationForm
+      <AuthFormComponent
         handleLoginButtonClick={this.handleLoginButtonClick}
         handleSignupButtonClick={this.handleSignupButtonClick}
         handleInputChange={this.handleInputChange}

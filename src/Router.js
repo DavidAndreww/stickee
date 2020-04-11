@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
-import LandingPage from "./components/LandingPage";
+import AuthFormContainer from "./components/AuthFormContainer";
 import Onboarding from "./components/Onboarding";
 import MainDisplayPage from "./components/MainDisplayPage";
 
@@ -23,8 +23,8 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
 const Router = () => {
   return (
     <Switch>
-      <Route exact path="/" component={LandingPage} />
-      <Route exact path="/signup" component={LandingPage} />
+      <Route exact path="/" component={AuthFormContainer} />
+      <Route exact path="/signup" component={AuthFormContainer} />
       <Route path="/onboarding" component={Onboarding} />
       <Route path="/sticky" component={MainDisplayPage} />
     </Switch>

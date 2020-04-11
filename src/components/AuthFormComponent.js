@@ -17,14 +17,14 @@ const SignupButton = () => {
   );
 };
 
-const AuthenticationForm = ({
+const AuthFormComponent = ({
   handleLoginButtonClick,
   handleSignupButtonClick,
   handleInputChange,
   toggleNewUserView,
   email,
   password,
-  isNewUser
+  isNewUser,
 }) => {
   return (
     <Container className="landing-page-component" maxWidth="xs">
@@ -50,23 +50,25 @@ const AuthenticationForm = ({
         />
         {isNewUser ? <SignupButton /> : <LoginButton />}
       </form>
-      {isNewUser ? <Button
-            onClick={toggleNewUserView}
-            color="secondary"
-            variant="contained"
-          >
-            Back To Login
-          </Button>
-         : 
-          <Button
-            onClick={toggleNewUserView}
-            color="secondary"
-            variant="contained"
-          >
-             Create User
-          </Button>}
+      {isNewUser ? (
+        <Button
+          onClick={toggleNewUserView}
+          color="secondary"
+          variant="contained"
+        >
+          Back To Login
+        </Button>
+      ) : (
+        <Button
+          onClick={toggleNewUserView}
+          color="secondary"
+          variant="contained"
+        >
+          Create User
+        </Button>
+      )}
     </Container>
   );
 };
 
-export default AuthenticationForm;
+export default AuthFormComponent;
