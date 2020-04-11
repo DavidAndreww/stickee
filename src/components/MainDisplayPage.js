@@ -14,8 +14,7 @@ class MainDisplayPage extends React.Component {
 
   removeSticky = (e) => {
     let id = parseInt(e.target.id);
-    let array = this.state.notes;
-    let newArray = array.filter((object) => object.id !== id);
+    let newArray = this.state.notes.filter((object) => object.id !== id);
     this.setState({ notes: newArray });
   };
 
