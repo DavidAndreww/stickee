@@ -8,16 +8,16 @@ const { handleSQLError } = require("../sql/error");
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
   let user = users.find((user) => user.email === email);
-  console.log('userLogin: "/"')
-  if (!user) {
-    res.status(404).send(`Email "${email}" doesn't exist.`);
-    return;
-  }
-  if (user.password === password) {
-    res.status(200).send(`Welcome, ${email}`);
-  } else {
-    res.status(404).send(`Incorrect password`);
-  }
+  res.send(email)
+  // if (!user) {
+  //   res.status(404).send(`Email "${email}" doesn't exist.`);
+  //   return;
+  // }
+  // if (user.password === password) {
+  //   res.status(200).send(`Welcome, ${email}`);
+  // } else {
+  //   res.status(404).send(`Incorrect password`);
+  // }
 };
 
 // @desc    adds new user info to db

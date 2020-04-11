@@ -6,70 +6,63 @@ class LandingPage extends React.Component {
   state = {
     email: "",
     password: "",
-    isNewUser: false
+    isNewUser: false,
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     const state = { ...this.state };
     state[e.target.name] = e.target.value;
     this.setState(state);
   };
 
-  handleLoginButtonClick = e => {
+  handleLoginButtonClick = (e) => {
     e.preventDefault();
     console.log("logging in");
     const userInfo = {
-      method: 'POST',
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.email,
-        pass: this.state.password
-      })
-    }
-    // needs to be async
-    .fetch("localhost:5005/")
-    .then(res => console.log(res.json()))
-    console.log(userInfo)
-    // this.props.history.push("/sticky");
-    // logic to check credentials and set cookie
+        password: this.state.password,
+      }),
+    };
+    fetch("/").then((res) => console.log(res.json()));
+    console.log(userInfo);
   };
 
-  handleSignupButtonClick = e => {
+  handleSignupButtonClick = (e) => {
     e.preventDefault();
-    const url = '/sticky'
+    const url = "/sticky";
 
     console.log("signing up: ", this.state.email);
-    
+
     const newUser = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.email,
-        pass: this.state.password
-      })
-    }
-    fetch(url, newUser)
-    .then((res)=>{
-      console.log(res.json())
-    })
+        pass: this.state.password,
+      }),
+    };
+    fetch(url, newUser).then((res) => {
+      console.log(res.json());
+    });
     // .then(response => {console.log(response)})
-    console.log(newUser)
-
+    console.log(newUser);
 
     // this.props.history.push("/sticky");
-
   };
 
   toggleNewUserView = () => {
-    const isNewUser = !this.state.isNewUser
+    const isNewUser = !this.state.isNewUser;
     if (isNewUser) {
-      this.setState({isNewUser})
-      this.props.history.push('/signup')
+      this.setState({ isNewUser });
+      this.props.history.push("/signup");
     } else {
-      this.setState({isNewUser})
-      this.props.history.push('/')
+      this.setState({ isNewUser });
+      this.props.history.push("/");
     }
-  }
+  };
 
   render() {
     return (
@@ -83,15 +76,19 @@ class LandingPage extends React.Component {
           isNewUser={this.state.isNewUser}
         />
         {!this.state.isNewUser ? (
-          <Button 
-          onClick={this.toggleNewUserView}
-          color="secondary" variant="contained">
+          <Button
+            onClick={this.toggleNewUserView}
+            color="secondary"
+            variant="contained"
+          >
             Sign Up
           </Button>
         ) : (
-          <Button 
-          onClick={this.toggleNewUserView}
-          color="secondary" variant="contained">
+          <Button
+            onClick={this.toggleNewUserView}
+            color="secondary"
+            variant="contained"
+          >
             Login
           </Button>
         )}
