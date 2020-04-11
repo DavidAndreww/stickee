@@ -7,17 +7,11 @@ const { handleSQLError } = require("../sql/error");
 // @route   GET /
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
-  let user = users.find((user) => user.email === email);
-  res.json({welcome: email})
-  // if (!user) {
-  //   res.status(404).send(`Email "${email}" doesn't exist.`);
-  //   return;
-  // }
-  // if (user.password === password) {
-  //   res.status(200).send(`Welcome, ${email}`);
-  // } else {
-  //   res.status(404).send(`Incorrect password`);
-  // }
+  let user = {
+    email: email, 
+    password: password
+  }
+  res.json({response: user})
 };
 
 // @desc    adds new user info to db

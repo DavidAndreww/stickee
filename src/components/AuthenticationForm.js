@@ -40,7 +40,6 @@ const AuthenticationForm = ({
           type="text"
         />
         <TextField
-          password
           required
           onChange={handleInputChange}
           value={password}
