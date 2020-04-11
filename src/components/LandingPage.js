@@ -46,14 +46,7 @@ class LandingPage extends React.Component {
         pass: this.state.password,
       }),
     };
-    async function fetchData (){
-      const response = await fetch('/signup', newUser)
-      const json = await response.json()
-      console.log(json)
-    }
-    // fetch('/signup', newUser)
-    // .then(res => res.json())
-    // .then(response => console.log(response))
+    this.fetchData('/signup', newUser)
   };
 
   toggleNewUserView = () => {

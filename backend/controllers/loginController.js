@@ -8,24 +8,23 @@ const { handleSQLError } = require("../sql/error");
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
   let user = {
-    email: email, 
-    password: password
-  }
-  res.json({message: 'Logged in!', user: user})
+    email: email,
+    password: password,
+  };
+  res.json({ message: "Logged in!", user: user });
 };
 
 // @desc    adds new user info to db
 // @route   POST /signup
 const newUserSignup = (req, res, next) => {
   let { email, password } = req.body;
-  email = email.split('.').join('')
+  email = email.split(".").join("");
+  res.json(`New user created: ${req.body.email}`)
 
   // let sql = 'INSERT INTO users (email, _password) VALUES (??, ??)'
   // const replacements = ['dbaryoa','123']
   // sql = mysql.format(sql, replacements)
   // res.json({msg: sql})
-  
-  
 
   // pool.query(sql, (err, results) => {
   //   if (err) return handleSQLError(res, err);
@@ -34,7 +33,6 @@ const newUserSignup = (req, res, next) => {
   //     new_user: results,
   //   });
   // });
-
 };
 
 module.exports = { userLogin, newUserSignup };
