@@ -46,20 +46,10 @@ class MainDisplayPage extends React.Component {
     const id = this.state.id;
     let type;
 
-    if (important) {
-      if (urgent) {
-        type = "do";
-      } else {
-        type = "plan";
-      }
-    }
-    if (!important) {
-      if (urgent) {
-        type = "delegate";
-      } else {
-        type = "delete";
-      }
-    }
+    important && urgent && (type = 'do')
+    important && !urgent && (type = 'plan')
+    !important && urgent && (type = 'delegate')
+    !important && !urgent && (type = 'delete')
 
     const totalNotes = notes.filter((notes) => notes.type === type);
 
