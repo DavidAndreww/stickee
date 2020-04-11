@@ -15,6 +15,13 @@ class LandingPage extends React.Component {
     this.setState(state);
   };
 
+  fetchData = async function (path, payload){
+    const response = await fetch(path, payload)
+    const json = await response.json()
+    console.log(json)
+    // return that cookie?
+  }
+
   handleLoginButtonClick = (e) => {
     e.preventDefault();
     console.log("logging in");
@@ -26,18 +33,11 @@ class LandingPage extends React.Component {
         password: this.state.password,
       }),
     };
-    fetch('/', userInfo)
-    .then(res => res.json())
-    .then(json => console.log(json))
-   
+    this.fetchData('/', userInfo)
   };
 
   handleSignupButtonClick = (e) => {
     e.preventDefault();
-    const url = "/sticky";
-
-    console.log("signing up: ", this.state.email);
-
     const newUser = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -46,9 +46,14 @@ class LandingPage extends React.Component {
         pass: this.state.password,
       }),
     };
-
-
-    // this.props.history.push("/sticky");
+    async function fetchData (){
+      const response = await fetch('/signup', newUser)
+      const json = await response.json()
+      console.log(json)
+    }
+    // fetch('/signup', newUser)
+    // .then(res => res.json())
+    // .then(response => console.log(response))
   };
 
   toggleNewUserView = () => {

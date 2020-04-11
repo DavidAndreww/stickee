@@ -11,31 +11,29 @@ const userLogin = (req, res, next) => {
     email: email, 
     password: password
   }
-  res.json({response: user})
+  res.json({message: 'Logged in!', user: user})
 };
 
 // @desc    adds new user info to db
-// @route   POST /
+// @route   POST /signup
 const newUserSignup = (req, res, next) => {
   let { email, password } = req.body;
   email = email.split('.').join('')
-  console.log(email)
-  console.log(password)
 
-  let sql = 'INSERT INTO users (email, _password) VALUES (??, ??)'
-  const replacements = ['dbaryoa','123']
-  sql = mysql.format(sql, replacements)
-  res.json({msg: sql})
+  // let sql = 'INSERT INTO users (email, _password) VALUES (??, ??)'
+  // const replacements = ['dbaryoa','123']
+  // sql = mysql.format(sql, replacements)
+  // res.json({msg: sql})
   
   
 
-  pool.query(sql, (err, results) => {
-    if (err) return handleSQLError(res, err);
-    return res.status(201).json({
-      message: "User Successfully Created",
-      new_user: results,
-    });
-  });
+  // pool.query(sql, (err, results) => {
+  //   if (err) return handleSQLError(res, err);
+  //   return res.status(201).json({
+  //     message: "User Successfully Created",
+  //     new_user: results,
+  //   });
+  // });
 
 };
 
