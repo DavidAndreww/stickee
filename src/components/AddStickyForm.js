@@ -13,14 +13,12 @@ const AddStickyForm = ({
   toggleAddStickyForm,
   stickyFormOpen,
 }) => {
-  console.log(stickyFormOpen)
   return (
     <div>
-    <button onClick={toggleAddStickyForm} className="toggle-dialog-btn">
-          +
-        </button>
+      <button onClick={toggleAddStickyForm} className="toggle-dialog-btn">
+        +
+      </button>
       <Dialog open={stickyFormOpen} className="add-sticky-dialog-component">
-        
         <form className="add-sticky-form-wrap" onSubmit={handleSubmit}>
           <div className="form-left-side">
             <label>I need to....</label>
