@@ -1,7 +1,6 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
 import AddStickyForm from "./AddStickyForm";
-import { Dialog } from "@material-ui/core";
 
 class MainDisplayPage extends React.Component {
   state = {
@@ -61,25 +60,25 @@ class MainDisplayPage extends React.Component {
         type = "delete";
       }
     }
-    
-    const totalNotes = notes.filter(notes => notes.type === type)
-  
-    if (totalNotes.length >= 6){
-      window.alert(`Finish some of your "${type}" tasks before adding more! `)
-      this.toggleAddStickyForm()
-      return false
+
+    const totalNotes = notes.filter((notes) => notes.type === type);
+
+    if (totalNotes.length >= 6) {
+      window.alert(`Finish some of your "${type}" tasks before adding more! `);
+      this.toggleAddStickyForm();
+      return false;
     }
-  
+
     const newNote = {
       id: id,
       type: type,
-      message: this.state.message
-    }
+      message: this.state.message,
+    };
     this.setState({
-      notes: [ ...notes, newNote ],
-      message: '',
-      id: id + 1
-    })
+      notes: [...notes, newNote],
+      message: "",
+      id: id + 1,
+    });
     this.toggleAddStickyForm();
   };
 
@@ -90,21 +89,17 @@ class MainDisplayPage extends React.Component {
           notes={this.state.notes}
           removeSticky={this.removeSticky}
         />
-        <Dialog open={this.state.stickyFormOpen}>
-          <AddStickyForm
-            toggleAddStickyForm={this.toggleAddStickyForm}
-            handleInputChange={this.handleInputChange}
-            handleUrgentSwitch={this.handleUrgentSwitch}
-            handleImportantSwitch={this.handleImportantSwitch}
-            handleSubmit={this.handleSubmit}
-            urgent={this.state.urgent}
-            important={this.state.important}
-            message={this.state.message}
-          />
-        </Dialog>
-        <button onClick={this.toggleAddStickyForm} className="toggle-dialog-btn">
-          +
-        </button>
+        <AddStickyForm
+          stickyFormOpen={this.stickyFormOpen}
+          toggleAddStickyForm={this.toggleAddStickyForm}
+          handleInputChange={this.handleInputChange}
+          handleUrgentSwitch={this.handleUrgentSwitch}
+          handleImportantSwitch={this.handleImportantSwitch}
+          handleSubmit={this.handleSubmit}
+          urgent={this.state.urgent}
+          important={this.state.important}
+          message={this.state.message}
+        />
       </div>
     );
   }
