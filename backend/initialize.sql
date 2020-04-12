@@ -8,7 +8,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE notes(
-  id INT NOT NULL,
+  id INT NOT NULL AUTO_INCREMENT,
   note_id INT NOT NULL,
   note_message VARCHAR(255),
   note_type VARCHAR(255),
