@@ -10,6 +10,7 @@ class MainDisplayPage extends React.Component {
     message: "",
     important: true,
     urgent: true,
+    // note ID needs to update based on last note id in DB
     id: 1,
   };
 
@@ -28,8 +29,6 @@ class MainDisplayPage extends React.Component {
 
   removeSticky = (e) => {
     let id = parseInt(e.target.id);
-    // let newArray = this.state.notes.filter((object) => object.id !== id);
-    // this.setState({ notes: newArray });
     let [toBeDeleted] = this.state.notes.filter((object) => object.id === id);
     
     fetchData('/sticky', {
