@@ -1,5 +1,15 @@
 // JOIN TABLE funcionality on login, to create new table that holds only those notes associated with that users user_id?
 
+// this doesn't work but I think I need something similar?
+// SELECT
+// 	user_id,
+//     note_id,
+//     note_message,
+//     note_type
+//     FROM notes
+//     GROUP BY user_id
+//     HAVING user_id = 1
+
 const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 2, message: 'study Javascript', type: 'do'}]
 
 
