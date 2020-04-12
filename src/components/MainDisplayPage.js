@@ -1,6 +1,7 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
 import AddStickyForm from "./AddStickyForm";
+import { fetchData } from '../helperFunctions'
 
 class MainDisplayPage extends React.Component {
   state = {
@@ -12,10 +13,23 @@ class MainDisplayPage extends React.Component {
     id: 1,
   };
 
+  componentDidMount(){
+    
+  }
+
   removeSticky = (e) => {
     let id = parseInt(e.target.id);
-    let newArray = this.state.notes.filter((object) => object.id !== id);
-    this.setState({ notes: newArray });
+    // let newArray = this.state.notes.filter((object) => object.id !== id);
+    // this.setState({ notes: newArray });
+    let [toBeDeleted] = this.state.notes.filter((object) => object.id === id);
+    
+    fetchData('/sticky', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        note_id: toBeDeleted.id
+      })
+    })
   };
 
   toggleAddStickyForm = () => {
@@ -68,6 +82,14 @@ class MainDisplayPage extends React.Component {
       message: "",
       id: id + 1,
     });
+
+    fetchData('/sticky', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        newNote: newNote
+      })
+    })
     this.toggleAddStickyForm();
   };
 

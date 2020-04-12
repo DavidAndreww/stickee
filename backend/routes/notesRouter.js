@@ -5,9 +5,8 @@ const { getNotes, addNotes, deleteNotes } = require('../controllers/notesControl
 router.route('/')
 .get(getNotes)
 
-router.route('/:id')
+router.route('/')
 .post(addNotes)
-//may need new route here?
 .delete(deleteNotes)
 
 module.exports = router;

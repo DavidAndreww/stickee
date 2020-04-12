@@ -1,28 +1,30 @@
 
 
-const toDo = [{msg: 'hi', id: 1}, {msg: 'bye', id: 2}]
-const toPlan = [2]
-const toDelegate = [3]
-const toDelete = [4]
+const notes = [{id: 1, message: 'wash car'}, {id: 2, message: 'study Javascript'}]
 
 
 // @desc    gets all stickee note entries
 // @route   GET /sticky
 const getNotes = (req, res, next) => {
-  res.json({toDo, toPlan, toDelegate, toDelete})
+  res.json({notes})
+  // 
 };
 
 // @desc    adds new stickee note
-// @route    POST /:id
+// @route    POST /sticky
 const addNotes = (req, res, next) => {
-  // res.send('POST a new stickee')
-  res.json(req.body)
+  let { newNote } = req.body
+  res.json(newNote)
+  // add new note to DB
+  // return array of all notes in db including new note
 }
 
 // @desc    deletes stickee note
-// @route   DELETE /:id
+// @route   DELETE /sticky
 const deleteNotes = (req, res, next) => {
-  res.send('DELETE a stickee')
+  let { note_id } = req.body;
+  res.json({deletedNote: note_id})
+  //return array of all notes in DB minus the deleted note
 }
 
 module.exports = { getNotes, addNotes, deleteNotes }
