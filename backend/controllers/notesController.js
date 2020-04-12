@@ -1,6 +1,6 @@
 
 
-const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 24, message: 'study Javascript', type: 'do'}]
+const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 2, message: 'study Javascript', type: 'do'}]
 
 
 
