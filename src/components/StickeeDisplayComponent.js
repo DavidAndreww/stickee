@@ -2,7 +2,6 @@ import React from "react";
 import StickeeNote from "./StickeeNote";
 
 const StickeeDisplayComponent = ({ notes, removeSticky }) => {
-  console.log(notes)
   const StickeeDisplay = ({ notes, priority }) => {
     const array = notes.filter((note) => note.type === priority);
     return (

@@ -1,12 +1,15 @@
 
 
-const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 2, message: 'study Javascript', type: 'do'}]
+const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 24, message: 'study Javascript', type: 'do'}]
 
 
 // @desc    gets all stickee note entries
 // @route   GET /sticky
 const getNotes = (req, res, next) => {
-  res.json({notes})
+  // allows me to update id in local state from db
+  let id = notes[notes.length -1].id
+
+  res.json({notes, id})
   // 
 };
 
