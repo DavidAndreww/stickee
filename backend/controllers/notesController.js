@@ -1,6 +1,9 @@
-
+// JOIN TABLE funcionality on login, to create new table that holds only those notes associated with that users user_id?
 
 const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 2, message: 'study Javascript', type: 'do'}]
+
+
+
 
 
 
@@ -16,6 +19,19 @@ const getNotes = (req, res, next) => {
   // SELECT * 
   // FROM notes
   // WHERE notes.user_id = 1
+
+  // let sql = 'SELECT * FROM notes WHERE notes.user_id = ??'
+  // const replacements = ['dbaryoa','123']
+  // sql = mysql.format(sql, replacements)
+  // res.json({msg: sql})
+
+  // pool.query(sql, (err, results) => {
+  //   if (err) return handleSQLError(res, err);
+  //   return res.status(201).json({
+  //     message: "User Successfully Created",
+  //     new_user: results,
+  //   });
+  // });
 };
 
 // @desc    adds new stickee note

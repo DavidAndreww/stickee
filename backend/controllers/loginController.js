@@ -3,6 +3,8 @@ const mysql = require("mysql");
 const pool = require("../sql/connection");
 const { handleSQLError } = require("../sql/error");
 
+// JOIN TABLE funcionality on login, to create new table that holds only those notes associated with that users user_id?
+
 // @desc    verifies login credentials
 // @route   GET /
 const userLogin = (req, res, next) => {
