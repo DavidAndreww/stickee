@@ -13,8 +13,17 @@ class MainDisplayPage extends React.Component {
     id: 1,
   };
 
+  fetchNotes = async function(path, payload){
+    const response = await fetch(path, payload)
+    const json = await response.json()
+    let data = [json][0].notes
+    this.setState({notes: data})
+  }
   componentDidMount(){
-    
+    this.fetchNotes('/sticky', {
+      method: 'GET',
+      headers: { "Content-Type": 'application/json' }
+    })
   }
 
   removeSticky = (e) => {
@@ -73,9 +82,9 @@ class MainDisplayPage extends React.Component {
     }
 
     const newNote = {
-      id: id,
-      type: type,
-      message: this.state.message,
+      note_id: id,
+      note_type: type,
+      note_message: this.state.message,
     };
     this.setState({
       notes: [...notes, newNote],

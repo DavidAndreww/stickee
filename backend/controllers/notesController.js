@@ -1,6 +1,6 @@
 
 
-const notes = [{id: 1, message: 'wash car'}, {id: 2, message: 'study Javascript'}]
+const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 2, message: 'study Javascript', type: 'do'}]
 
 
 // @desc    gets all stickee note entries
