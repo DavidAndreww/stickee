@@ -3,11 +3,12 @@
 const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 24, message: 'study Javascript', type: 'do'}]
 
 
+
 // @desc    gets all stickee note entries
 // @route   GET /sticky
 const getNotes = (req, res, next) => {
   // allows me to update id in local state from db
-  let id = notes[notes.length -1].id
+  let id = notes.length > 0 ? notes[notes.length -1].id : 1
 
   res.json({notes, id})
   // 
