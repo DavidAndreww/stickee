@@ -11,7 +11,8 @@ class MainDisplayPage extends React.Component {
     important: true,
     urgent: true,
     // note ID needs to update based on last note id in DB
-    id: 1
+    id: 1,
+    userId: null
   };
   
 
