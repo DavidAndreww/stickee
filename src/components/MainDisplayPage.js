@@ -23,6 +23,7 @@ class MainDisplayPage extends React.Component {
     let id = json.id
     this.setState({notes: data, id: id})
   }
+  
   componentDidMount(){
     this.fetchNotes('/sticky', {
       method: 'GET',

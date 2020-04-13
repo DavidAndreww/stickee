@@ -28,6 +28,13 @@ class LandingPage extends React.Component {
     }
   };
 
+  fetchData = async function (path, payload){
+   const response = await fetch(path, payload)
+   const json = await response.json()
+   console.log(json.new_user.id)
+   this.setState({userId: json.new_user.id})
+   // return that cookie?
+ }
   handleLoginButtonClick = (e) => {
     e.preventDefault();
     // fetchData("/", {
@@ -40,13 +47,6 @@ class LandingPage extends React.Component {
     // });
   };
 
-   fetchData = async function (path, payload){
-    const response = await fetch(path, payload)
-    const json = await response.json()
-    console.log(json.new_user.id)
-    this.setState({userId: json.new_user.id})
-    // return that cookie?
-  }
   handleSignupButtonClick = (e) => {
     e.preventDefault();
     this.fetchData("/signup", {
