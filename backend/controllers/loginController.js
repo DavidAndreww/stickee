@@ -1,6 +1,6 @@
 const { users } = require("../data");
 const mysql = require("mysql");
-const pool = require("../sql/connection");
+const pool = require('../sql/connection')
 const { handleSQLError } = require("../sql/error");
 
 // JOIN TABLE funcionality on login, to create new table that holds only those notes associated with that users user_id?
@@ -29,18 +29,18 @@ const newUserSignup = (req, res, next) => {
     },
   });
 
-  // let sql = 'INSERT INTO users (email, _password) VALUES (??, ??)'
-  // const replacements = ['dbaryoa','123']
-  // sql = mysql.format(sql, replacements)
-  // res.json({msg: sql})
+  let sql = 'INSERT INTO users (email, _password) VALUES (??, ??)'
+  const replacements = [ `${email}`,'123']
+  sql = mysql.format(sql, replacements)
+  console.log(sql);
 
-  // pool.query(sql, (err, results) => {
-  //   if (err) return handleSQLError(res, err);
-  //   return res.status(201).json({
-  //     message: "User Successfully Created",
-  //     new_user: results,
-  //   });
-  // });
+  pool.query(sql, (err, results) => {
+    if (err) return handleSQLError(res, err);
+    return res.status(201).json({
+      message: "User Successfully Created",
+      new_user: results,
+    });
+  });
 };
 
 module.exports = { userLogin, newUserSignup };
