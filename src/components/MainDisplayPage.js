@@ -33,7 +33,7 @@ class MainDisplayPage extends React.Component {
   }
 
   removeSticky = (e) => {
-    let id = parseInt(e.target.id);
+    const id = parseInt(e.target.id);
 
     // fetchData("/sticky", {
     //   method: "DELETE",
@@ -86,7 +86,7 @@ class MainDisplayPage extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    // fetchData("/sticky", {
+    // fetchData("/sticky/", {
     //   method: "POST",
     //   headers: { "Content-Type": "application/json" },
     //   body: JSON.stringify({

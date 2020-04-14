@@ -42,6 +42,7 @@ class LandingPage extends React.Component {
     // });
   };
 
+  // ** Signup functionality works correctly **
   signupFetchRequest = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
@@ -49,8 +50,6 @@ class LandingPage extends React.Component {
     this.setState({ userId: json.new_user.id });
     // return that cookie?
   };
-
-  // THIS WORKS CORRECTLY 4/13 PM
   handleSignupButtonClick = (e) => {
     e.preventDefault();
     this.signupFetchRequest("/signup", {
