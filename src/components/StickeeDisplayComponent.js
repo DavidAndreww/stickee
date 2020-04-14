@@ -2,7 +2,7 @@ import React from "react";
 import StickeeNote from "./StickeeNote";
 
 const StickeeDisplayComponent = ({ notes, removeStickee }) => {
-  const StickeeDisplay = ({ notes, priority }) => {
+  const IndividualPriorityField = ({ notes, priority }) => {
     const array = notes.filter((note) => note.note_type === priority);
     return (
       <div className="individual-priority-display-field">
@@ -24,10 +24,10 @@ const StickeeDisplayComponent = ({ notes, removeStickee }) => {
 
   return (
     <div className="priority-display-field-container">
-      <StickeeDisplay notes={notes} priority="do" />
-      <StickeeDisplay notes={notes} priority="plan" />
-      <StickeeDisplay notes={notes} priority="delegate" />
-      <StickeeDisplay notes={notes} priority="delete" />
+      <IndividualPriorityField notes={notes} priority="do" />
+      <IndividualPriorityField notes={notes} priority="plan" />
+      <IndividualPriorityField notes={notes} priority="delegate" />
+      <IndividualPriorityField notes={notes} priority="delete" />
     </div>
   );
 };
