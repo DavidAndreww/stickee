@@ -18,7 +18,7 @@ const { handleSQLError } = require("../sql/error");
 
 
 // @desc    gets all stickee note entries
-// @route   POST /sticky
+// @route   POST /stickee
 const getNotes = (req, res, next) => {
   let { user_id } = req.body;
 
@@ -36,7 +36,7 @@ const getNotes = (req, res, next) => {
 };
 
 // @desc    adds new stickee note
-// @route    POST /sticky/add
+// @route    POST /stickee/add
 const addNotes = (req, res, next) => {
   let { newNote } = req.body
   res.json(newNote)
@@ -49,7 +49,7 @@ const addNotes = (req, res, next) => {
 }
 
 // @desc    deletes stickee note
-// @route   DELETE /sticky
+// @route   DELETE /stickee
 const deleteNotes = (req, res, next) => {
   let { note_id, user_id } = req.body;
   

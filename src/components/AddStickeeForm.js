@@ -2,7 +2,7 @@ import React from "react";
 import Switch from "@material-ui/core/Switch";
 import Dialog from "@material-ui/core/Dialog";
 
-const AddStickyForm = ({
+const AddStickeeForm = ({
   handleInputChange,
   handleSubmit,
   handleUrgentSwitch,
@@ -10,16 +10,16 @@ const AddStickyForm = ({
   urgent,
   message,
   important,
-  toggleAddStickyForm,
-  stickyFormOpen,
+  toggleAddStickeeForm,
+  stickeeFormOpen,
 }) => {
   return (
     <div>
-      <button onClick={toggleAddStickyForm} className="toggle-dialog-btn">
+      <button onClick={toggleAddStickeeForm} className="toggle-dialog-btn">
         +
       </button>
-      <Dialog open={stickyFormOpen} className="add-sticky-dialog-component">
-        <form className="add-sticky-form-wrap" onSubmit={handleSubmit}>
+      <Dialog open={stickeeFormOpen} className="add-stickee-dialog-component">
+        <form className="add-stickee-form-wrap" onSubmit={handleSubmit}>
           <div className="form-left-side">
             <label>I need to....</label>
             <textarea rows="5" value={message} onChange={handleInputChange} />
@@ -50,7 +50,7 @@ const AddStickyForm = ({
             <button type="submit">Stick It!</button>
           </div>
         </form>
-        <button className="sticky-form-back-btn" onClick={toggleAddStickyForm}>
+        <button className="stickee-form-back-btn" onClick={toggleAddStickeeForm}>
           Back
         </button>
       </Dialog>
@@ -58,4 +58,4 @@ const AddStickyForm = ({
   );
 };
 
-export default AddStickyForm;
+export default AddStickeeForm;

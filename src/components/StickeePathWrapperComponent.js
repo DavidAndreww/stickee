@@ -1,12 +1,12 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
-import AddStickyForm from "./AddStickyForm";
+import AddStickeeForm from "./AddStickeeForm";
 // import { fetchData } from "../helperFunctions";
 
-class MainDisplayPage extends React.Component {
+class StickeePathWrapperComponent extends React.Component {
   state = {
     notes: [],
-    stickyFormOpen: false,
+    stickeeFormOpen: false,
     message: "",
     important: true,
     urgent: true,
@@ -23,7 +23,7 @@ class MainDisplayPage extends React.Component {
     this.setState({ notes: data, note_id: id });
   };
   componentDidMount() {
-    this.fetchNotesOnLogin("/sticky", {
+    this.fetchNotesOnLogin("/stickee", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -32,15 +32,15 @@ class MainDisplayPage extends React.Component {
     });
   }
 
-
-  fetchToDeleteSticky = async function (path, payload) {
+  // ***** Works but does not allow for notes to be updated and pulled back *****
+  fetchToDeleteStickee = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
     console.log(json)
   }
-  removeSticky = (e) => {
+  removeStickee = (e) => {
     const id = parseInt(e.target.id);
-    this.fetchToDeleteSticky("/sticky", {
+    this.fetchToDeleteStickee("/stickee", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -50,11 +50,16 @@ class MainDisplayPage extends React.Component {
     });
   };
 
-  toggleAddStickyForm = () => {
-    let stickyFormOpen = !this.state.stickyFormOpen;
-    this.setState({ stickyFormOpen });
+  toggleAddStickeeForm = () => {
+    let stickeeFormOpen = !this.state.stickeeFormOpen;
+    this.setState({ stickeeFormOpen });
   };
 
+
+
+
+
+  
   handleImportantSwitch = () => {
     let important = !this.state.important;
     this.setState({ important });
@@ -92,7 +97,7 @@ class MainDisplayPage extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    // fetchData("/sticky/", {
+    // fetchData("/stickee/", {
     //   method: "POST",
     //   headers: { "Content-Type": "application/json" },
     //   body: JSON.stringify({
@@ -105,7 +110,7 @@ class MainDisplayPage extends React.Component {
     //   message: "",
     //   id: id + 1,
     // });
-    this.toggleAddStickyForm();
+    this.toggleAddStickeeForm();
   };
 
   render() {
@@ -113,11 +118,11 @@ class MainDisplayPage extends React.Component {
       <div className="main-display-component">
         <StickeeDisplayComponent
           notes={this.state.notes}
-          removeSticky={this.removeSticky}
+          removeStickee={this.removeStickee}
         />
-        <AddStickyForm
-          stickyFormOpen={this.state.stickyFormOpen}
-          toggleAddStickyForm={this.toggleAddStickyForm}
+        <AddStickeeForm
+          stickeeFormOpen={this.state.stickeeFormOpen}
+          toggleAddStickeeForm={this.toggleAddStickeeForm}
           handleInputChange={this.handleInputChange}
           handleUrgentSwitch={this.handleUrgentSwitch}
           handleImportantSwitch={this.handleImportantSwitch}
@@ -131,4 +136,4 @@ class MainDisplayPage extends React.Component {
   }
 }
 
-export default MainDisplayPage;
+export default StickeePathWrapperComponent;

@@ -1,7 +1,7 @@
 import React from "react";
 import StickeeNote from "./StickeeNote";
 
-const StickeeDisplayComponent = ({ notes, removeSticky }) => {
+const StickeeDisplayComponent = ({ notes, removeStickee }) => {
   const StickeeDisplay = ({ notes, priority }) => {
     const array = notes.filter((note) => note.note_type === priority);
     return (
@@ -14,7 +14,7 @@ const StickeeDisplayComponent = ({ notes, removeSticky }) => {
               id={note.note_id}
               priority={priority}
               message={note.note_message}
-              removeSticky={removeSticky}
+              removeStickee={removeStickee}
             />
           ))}
         </div>

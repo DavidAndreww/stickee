@@ -1,8 +1,8 @@
 import React from "react";
 
-const StickeeNote = ({ message, removeSticky, priority, id }) => {
+const StickeeNote = ({ message, removeStickee, priority, id }) => {
   return (
-    <button name={priority} id={id} className="sticky" onClick={removeSticky}>
+    <button name={priority} id={id} className="stickee" onClick={removeStickee}>
       {message}
     </button>
   );

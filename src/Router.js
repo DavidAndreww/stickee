@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 import AuthFormContainer from "./components/AuthFormContainer";
 import Onboarding from "./components/Onboarding";
-import MainDisplayPage from "./components/MainDisplayPage";
+import StickeePathWrapperComponent from './components/StickeePathWrapperComponent';
 
 const checkAuth = () => {
   //autorization logic here
@@ -26,7 +26,7 @@ const Router = () => {
       <Route exact path="/" component={AuthFormContainer} />
       <Route exact path="/signup" component={AuthFormContainer} />
       <Route path="/onboarding" component={Onboarding} />
-      <Route path="/sticky" component={MainDisplayPage} />
+      <Route path="/stickee" component={StickeePathWrapperComponent} />
     </Switch>
   );
 };

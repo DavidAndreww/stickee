@@ -11,7 +11,7 @@ const notesRouter = require('./backend/routes/notesRouter')
 const loginRouter = require('./backend/routes/loginRouter')
 
 app.use('/', loginRouter)
-app.use('/sticky', notesRouter)
+app.use('/stickee', notesRouter)
 
 const PORT = process.env.PORT || 5000;
 
