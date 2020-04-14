@@ -24,7 +24,7 @@ class StickeeDisplayContainer extends React.Component {
     });
   }
 
-  // ***** Works but does not allow for notes to be updated and pulled back *****
+  // ***** Works *****
   fetchToDeleteStickee = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();

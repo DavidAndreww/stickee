@@ -44,24 +44,22 @@ class AddStickeeFormContainer extends React.Component {
     !important && urgent && (type = "delegate");
     !important && !urgent && (type = "delete");
 
-    const newNote = {
+    return {
       user_id: this.state.user_id,
       note_id: id,
       note_type: type,
       note_message: message,
     };
-    return newNote;
   };
 
+  // need to use redux to pass in notes state and update locally to reflect in browser
   addStickeeFetchRequest = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = response.json()
     console.log(json)
   }
-
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.createNewStickeeObject())
 
     this.addStickeeFetchRequest("/stickee/add", {
       method: "POST",
