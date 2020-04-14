@@ -1,7 +1,7 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
 import AddStickyForm from "./AddStickyForm";
-import { fetchData } from "../helperFunctions";
+// import { fetchData } from "../helperFunctions";
 
 class MainDisplayPage extends React.Component {
   state = {
@@ -15,7 +15,7 @@ class MainDisplayPage extends React.Component {
     user_id: 1
   };
 
-  fetchNotes = async function (path, payload) {
+  fetchNotesOnLogin = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
     let data = [json][0].results;
@@ -24,7 +24,7 @@ class MainDisplayPage extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchNotes("/sticky", {
+    this.fetchNotesOnLogin("/sticky", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -35,15 +35,16 @@ class MainDisplayPage extends React.Component {
 
   removeSticky = (e) => {
     let id = parseInt(e.target.id);
-    let [toBeDeleted] = this.state.notes.filter((object) => object.id === id);
+    let [toBeDeleted] = this.state.notes.filter((object) => object.note_id === id);
+    console.log(toBeDeleted)
 
-    fetchData("/sticky", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        note_id: toBeDeleted.id,
-      }),
-    });
+    // fetchData("/sticky", {
+    //   method: "DELETE",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     note_id: toBeDeleted.id,
+    //   }),
+    // });
   };
 
   toggleAddStickyForm = () => {
@@ -88,13 +89,13 @@ class MainDisplayPage extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    fetchData("/sticky", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        newNote: this.createNewStickeeObject(),
-      }),
-    });
+    // fetchData("/sticky", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     newNote: this.createNewStickeeObject(),
+    //   }),
+    // });
 
     // this.setState({
     //   notes: [...notes, newNote],
