@@ -1,5 +1,5 @@
 import React from "react";
-import StickeeNote from "./StickeeNote";
+import StickeeNoteComponent from "./StickeeNoteComponent";
 
 const StickeeDisplayComponent = ({ notes, removeStickee }) => {
   const IndividualPriorityField = ({ notes, priority }) => {
@@ -9,7 +9,7 @@ const StickeeDisplayComponent = ({ notes, removeStickee }) => {
         <h5>{array.length > 0 ? priority.toUpperCase() : ''}</h5>
         <div className={priority}>
           {array.map((note) => (
-            <StickeeNote
+            <StickeeNoteComponent
               key={note.note_id}
               id={note.note_id}
               priority={priority}
