@@ -6,7 +6,7 @@ const StickeeDisplayComponent = ({ notes, removeStickee }) => {
     const array = notes.filter((note) => note.note_type === priority);
     return (
       <div className="individual-priority-display-field">
-        <h5>{priority}</h5>
+        <h5>{array.length > 0 ? priority.toUpperCase() : ''}</h5>
         <div className={priority}>
           {array.map((note) => (
             <StickeeNote
