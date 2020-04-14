@@ -4,7 +4,6 @@ import StickeeDisplayComponent from "./StickeeDisplayComponent";
 class StickeeDisplayContainer extends React.Component {
   state = {
     notes: [],
-    stickeeFormOpen: false,
     user_id: 1,
   };
 
@@ -41,11 +40,6 @@ class StickeeDisplayContainer extends React.Component {
         user_id: this.state.user_id,
       }),
     });
-  };
-
-  toggleAddStickeeForm = () => {
-    let stickeeFormOpen = !this.state.stickeeFormOpen;
-    this.setState({ stickeeFormOpen });
   };
 
   render() {

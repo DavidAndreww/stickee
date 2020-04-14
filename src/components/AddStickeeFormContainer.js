@@ -12,6 +12,10 @@ class AddStickeeFormContainer extends React.Component {
     user_id: 1
   }
 
+  toggleAddStickeeForm = () => {
+    let stickeeFormOpen = !this.state.stickeeFormOpen;
+    this.setState({ stickeeFormOpen });
+  };
 
   handleImportantSwitch = () => {
     let important = !this.state.important;
@@ -40,6 +44,7 @@ class AddStickeeFormContainer extends React.Component {
     !important && !urgent && (type = "delete");
 
     const newNote = {
+      user_id: this.state.user_id,
       note_id: id,
       note_type: type,
       note_message: message,
@@ -49,6 +54,7 @@ class AddStickeeFormContainer extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.createNewStickeeObject())
 
     // fetchData("/stickee/", {
     //   method: "POST",
