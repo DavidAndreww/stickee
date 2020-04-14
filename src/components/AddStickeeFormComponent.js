@@ -2,7 +2,7 @@ import React from "react";
 import Switch from "@material-ui/core/Switch";
 import Dialog from "@material-ui/core/Dialog";
 
-const AddStickeeForm = ({
+const AddStickeeFormComponent = ({
   handleInputChange,
   handleSubmit,
   handleUrgentSwitch,
@@ -58,4 +58,4 @@ const AddStickeeForm = ({
   );
 };
 
-export default AddStickeeForm;
+export default AddStickeeFormComponent;
