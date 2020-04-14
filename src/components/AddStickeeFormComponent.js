@@ -2,27 +2,17 @@ import React from "react";
 import Switch from "@material-ui/core/Switch";
 import Dialog from "@material-ui/core/Dialog";
 
-const AddStickeeFormComponent = ({
-  handleInputChange,
-  handleSubmit,
-  handleUrgentSwitch,
-  handleImportantSwitch,
-  urgent,
-  message,
-  important,
-  toggleAddStickeeForm,
-  stickeeFormOpen,
-}) => {
+const AddStickeeFormComponent = (props) => {
   return (
     <div>
-      <button onClick={toggleAddStickeeForm} className="toggle-dialog-btn">
+      <button onClick={props.toggleAddStickeeForm} className="toggle-dialog-btn">
         +
       </button>
-      <Dialog open={stickeeFormOpen} className="add-stickee-dialog-component">
-        <form className="add-stickee-form-wrap" onSubmit={handleSubmit}>
+      <Dialog open={props.stickeeFormOpen} className="add-stickee-dialog-component">
+        <form className="add-stickee-form-wrap" onSubmit={props.handleSubmit}>
           <div className="form-left-side">
             <label>I need to....</label>
-            <textarea rows="5" value={message} onChange={handleInputChange} />
+            <textarea rows="5" value={props.message} onChange={props.handleInputChange} />
           </div>
           <div className="form-right-side">
             <div className="switch">
@@ -31,8 +21,8 @@ const AddStickeeFormComponent = ({
               no
               <Switch
                 id="important"
-                checked={important}
-                onChange={handleImportantSwitch}
+                checked={props.important}
+                onChange={props.handleImportantSwitch}
               />
               yes
             </div>
@@ -42,15 +32,15 @@ const AddStickeeFormComponent = ({
               no
               <Switch
                 id="urgent"
-                checked={urgent}
-                onChange={handleUrgentSwitch}
+                checked={props.urgent}
+                onChange={props.handleUrgentSwitch}
               />
               yes
             </div>
             <button type="submit">Stick It!</button>
           </div>
         </form>
-        <button className="stickee-form-back-btn" onClick={toggleAddStickeeForm}>
+        <button className="stickee-form-back-btn" onClick={props.toggleAddStickeeForm}>
           Back
         </button>
       </Dialog>
