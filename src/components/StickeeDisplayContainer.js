@@ -40,6 +40,17 @@ class StickeeDisplayContainer extends React.Component {
         user_id: this.state.user_id,
       }),
     });
+    let toBeDeleted = this.state.notes.filter(notes => notes.note_id !== id)
+    this.setState({notes: toBeDeleted})
+    
+    // * Don't know if i should be making double fetch requests or updating local state to reflect changes in browser
+    // this.fetchNotesOnLogin("/stickee", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     user_id: this.state.user_id,
+    //   }),
+    // });
   };
 
   render() {

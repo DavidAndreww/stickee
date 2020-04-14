@@ -53,22 +53,29 @@ class AddStickeeFormContainer extends React.Component {
     return newNote;
   };
 
+  addStickeeFetchRequest = async function (path, payload) {
+    const response = await fetch(path, payload);
+    const json = response.json()
+    console.log(json)
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.createNewStickeeObject())
 
-    // fetchData("/stickee/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     newNote: this.createNewStickeeObject(),
-    //   }),
-    // });
+    this.addStickeeFetchRequest("/stickee/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        newNote: this.createNewStickeeObject(),
+      }),
+    });
 
     this.setState({
       message: "",
       note_id: this.state.note_id + 1,
     });
+    
     this.toggleAddStickeeForm();
   }
 
