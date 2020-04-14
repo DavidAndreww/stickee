@@ -3,17 +3,17 @@ import StickeeNote from "./StickeeNote";
 
 const StickeeDisplayComponent = ({ notes, removeSticky }) => {
   const StickeeDisplay = ({ notes, priority }) => {
-    const array = notes.filter((note) => note.type === priority);
+    const array = notes.filter((note) => note.note_type === priority);
     return (
       <div className="individual-priority-display-field">
         <h5>{priority}</h5>
         <div className={priority}>
           {array.map((note) => (
             <StickeeNote
-              key={note.id}
-              id={note.id}
+              key={note.note_id}
+              id={note.note_id}
               priority={priority}
-              message={note.message}
+              message={note.note_message}
               removeSticky={removeSticky}
             />
           ))}

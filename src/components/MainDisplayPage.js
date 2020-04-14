@@ -12,20 +12,24 @@ class MainDisplayPage extends React.Component {
     urgent: true,
     // note ID needs to update based on last note id in DB
     note_id: 1,
+    user_id: 1
   };
 
   fetchNotes = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
-    let data = [json][0].notes;
-    let id = json.id;
+    let data = [json][0].results;
+    let id = json.note_id;
     this.setState({ notes: data, note_id: id });
   };
 
   componentDidMount() {
     this.fetchNotes("/sticky", {
-      method: "GET",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: this.state.user_id
+      })
     });
   }
 
