@@ -40,7 +40,7 @@ const AddStickeeFormComponent = (props) => {
             <button type="submit">Stick It!</button>
           </div>
         </form>
-        <button className="stickee-form-back-btn" onClick={props.toggleAddStickeeForm}>
+        <button className="stickee-form-back-btn" onClick={() => props.toggleAddStickeeForm(true)}>
           Back
         </button>
       </Dialog>

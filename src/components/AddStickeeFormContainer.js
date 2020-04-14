@@ -12,8 +12,9 @@ class AddStickeeFormContainer extends React.Component {
     user_id: 1
   }
 
-  toggleAddStickeeForm = () => {
+  toggleAddStickeeForm = (backbtn = null) => {
     let stickeeFormOpen = !this.state.stickeeFormOpen;
+    if (backbtn) this.setState({message: '', important: true, urgent: true})
     this.setState({ stickeeFormOpen });
   };
 
@@ -64,11 +65,10 @@ class AddStickeeFormContainer extends React.Component {
     //   }),
     // });
 
-    // this.setState({
-    //   notes: [...notes, newNote],
-    //   message: "",
-    //   id: id + 1,
-    // });
+    this.setState({
+      message: "",
+      note_id: this.state.note_id + 1,
+    });
     this.toggleAddStickeeForm();
   }
 
