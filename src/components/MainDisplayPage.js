@@ -10,8 +10,8 @@ class MainDisplayPage extends React.Component {
     message: "",
     important: true,
     urgent: true,
-    // note ID needs to update based on last note id in DB
     note_id: 1,
+    //needs to be generated from user login
     user_id: 1
   };
 
@@ -32,16 +32,22 @@ class MainDisplayPage extends React.Component {
     });
   }
 
+
+  fetchToDeleteSticky = async function (path, payload) {
+    const response = await fetch(path, payload);
+    const json = await response.json();
+    console.log(json)
+  }
   removeSticky = (e) => {
     const id = parseInt(e.target.id);
-
-    // fetchData("/sticky", {
-    //   method: "DELETE",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     note_id: id,
-    //   }),
-    // });
+    this.fetchToDeleteSticky("/sticky", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        note_id: id,
+        user_id: this.state.user_id
+      }),
+    });
   };
 
   toggleAddStickyForm = () => {

@@ -2,11 +2,10 @@ const express = require('express')
 const router = express.Router();
 const { getNotes, addNotes, deleteNotes } = require('../controllers/notesController')
 
-router.route('/')
-.post(getNotes)
+router.post('/', getNotes)
 
-router.route('/')
-// .post(addNotes)
-.delete(deleteNotes)
+router.post('/add', addNotes)
+
+router.delete('/', deleteNotes)
 
 module.exports = router;

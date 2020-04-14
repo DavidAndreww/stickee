@@ -36,7 +36,7 @@ const getNotes = (req, res, next) => {
 };
 
 // @desc    adds new stickee note
-// @route    POST /sticky
+// @route    POST /sticky/add
 const addNotes = (req, res, next) => {
   let { newNote } = req.body
   res.json(newNote)
@@ -51,15 +51,18 @@ const addNotes = (req, res, next) => {
 // @desc    deletes stickee note
 // @route   DELETE /sticky
 const deleteNotes = (req, res, next) => {
-  let { note_id } = req.body;
-  res.json({deletedNote: note_id})
-  //return array of all notes in DB minus the deleted note
-
-
-//  DELETE FROM 
-// 	notes
-// WHERE
-// 	user_id = 1 && note_id = 2 
+  let { note_id, user_id } = req.body;
+  
+  pool.query(
+    "DELETE FROM notes WHERE user_id = " + user_id + " && note_id = " + note_id,
+    (err, results) => {
+      if (err) return handleSQLError(res, err);
+      return res.status(201).json({
+        results: results
+      });
+    }
+  );
+  // do I also need to do another query to get the updated results to reload the frontend?
 
 }
 
