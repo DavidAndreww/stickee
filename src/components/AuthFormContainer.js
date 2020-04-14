@@ -42,7 +42,7 @@ class LandingPage extends React.Component {
     // });
   };
 
-  // ** Signup functionality works correctly **
+  // ***** Signup functionality works correctly *****
   signupFetchRequest = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
