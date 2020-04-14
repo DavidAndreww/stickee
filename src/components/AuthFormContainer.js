@@ -1,14 +1,12 @@
 import React from "react";
-import { Button } from "@material-ui/core";
 import AuthFormComponent from "./AuthFormComponent";
-// import { fetchData } from "../helperFunctions";
 
 class LandingPage extends React.Component {
   state = {
     email: "",
     password: "",
     isNewUser: false,
-    userId: null
+    userId: null,
   };
 
   handleInputChange = (e) => {
@@ -28,13 +26,10 @@ class LandingPage extends React.Component {
     }
   };
 
-  fetchData = async function (path, payload){
-   const response = await fetch(path, payload)
-   const json = await response.json()
-   console.log(json.new_user.id)
-   this.setState({userId: json.new_user.id})
-   // return that cookie?
- }
+  loginFetchRequest = async function (path, payload){
+
+  }
+
   handleLoginButtonClick = (e) => {
     e.preventDefault();
     // fetchData("/", {
@@ -47,9 +42,18 @@ class LandingPage extends React.Component {
     // });
   };
 
+  signupFetchRequest = async function (path, payload) {
+    const response = await fetch(path, payload);
+    const json = await response.json();
+    console.log(json.new_user);
+    this.setState({ userId: json.new_user.id });
+    // return that cookie?
+  };
+
+  // THIS WORKS CORRECTLY 4/13 PM
   handleSignupButtonClick = (e) => {
     e.preventDefault();
-    this.fetchData("/signup", {
+    this.signupFetchRequest("/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
