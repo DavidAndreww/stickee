@@ -22,7 +22,6 @@ class MainDisplayPage extends React.Component {
     let id = json.note_id;
     this.setState({ notes: data, note_id: id });
   };
-
   componentDidMount() {
     this.fetchNotesOnLogin("/sticky", {
       method: "POST",
@@ -35,14 +34,12 @@ class MainDisplayPage extends React.Component {
 
   removeSticky = (e) => {
     let id = parseInt(e.target.id);
-    let [toBeDeleted] = this.state.notes.filter((object) => object.note_id === id);
-    console.log(toBeDeleted)
 
     // fetchData("/sticky", {
     //   method: "DELETE",
     //   headers: { "Content-Type": "application/json" },
     //   body: JSON.stringify({
-    //     note_id: toBeDeleted.id,
+    //     note_id: id,
     //   }),
     // });
   };
