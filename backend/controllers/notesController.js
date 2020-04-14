@@ -21,7 +21,7 @@ const notes = [{id: 1, message: 'wash car', type: 'plan'}, {id: 2, message: 'stu
 // @route   GET /sticky
 const getNotes = (req, res, next) => {
   // allows me to update id in local state from db
-  let id = notes.length > 0 ? notes[notes.length -1].id : 1
+  let id = notes.length > 0 ? notes[notes.length -1].id + 1 : 1
 
   res.json({notes, id})
 
