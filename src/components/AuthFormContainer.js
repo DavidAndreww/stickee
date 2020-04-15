@@ -1,6 +1,5 @@
 import React from "react";
 import AuthFormComponent from "./AuthFormComponent";
-// import { fetchData } from '../helperFunctions'
 
 class AuthFormContainer extends React.Component {
   state = {
@@ -27,19 +26,21 @@ class AuthFormContainer extends React.Component {
   };
 
   loginFetchRequest = async function (path, payload){
-
+    const response = await fetch(path, payload)
+    const json = await response.json()
+    console.log(json)
   }
 
   handleLoginButtonClick = (e) => {
     e.preventDefault();
-    // fetchData("/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     email: this.state.email,
-    //     password: this.state.password,
-    //   }),
-    // });
+    this.loginFetchRequest("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    });
   };
 
   // ***** Signup functionality works correctly *****
