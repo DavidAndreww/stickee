@@ -1,6 +1,8 @@
 import React from 'react'
 import AddStickeeFormComponent from './AddStickeeFormComponent';
 
+
+
 class AddStickeeFormContainer extends React.Component {
   state = {
     stickeeFormOpen: false,
