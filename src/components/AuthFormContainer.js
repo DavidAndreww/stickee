@@ -46,9 +46,7 @@ class AuthFormContainer extends React.Component {
   signupFetchRequest = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
-    console.log(json.new_user);
     this.props.logUserId(json.new_user.id)
-    // this.setState({ userId: json.new_user.id });
     // return that cookie?
   };
   handleSignupButtonClick = (e) => {
