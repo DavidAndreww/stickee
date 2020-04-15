@@ -2,7 +2,7 @@ import React from "react";
 import AuthFormComponent from "./AuthFormComponent";
 import { fetchData } from '../helperFunctions'
 
-class LandingPage extends React.Component {
+class AuthFormContainer extends React.Component {
   state = {
     email: "",
     password: "",
@@ -78,4 +78,4 @@ class LandingPage extends React.Component {
   }
 }
 
-export default LandingPage;
+export default AuthFormContainer;
