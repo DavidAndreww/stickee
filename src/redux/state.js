@@ -1,5 +1,5 @@
 const state = {
-  user_id: null,
+  user_id: 1,
   notes: [],
 };
 

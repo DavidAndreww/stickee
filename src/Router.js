@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
-import AuthFormContainer from "./components/AuthFormContainer";
+import AuthFormContainer from './containers/AuthFormContainer';
 import Onboarding from "./components/Onboarding";
 import StickeePathWrapperComponent from './components/StickeePathWrapperComponent';
 

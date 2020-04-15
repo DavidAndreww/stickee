@@ -1,13 +1,12 @@
 import React from "react";
 import AuthFormComponent from "./AuthFormComponent";
-import { fetchData } from '../helperFunctions'
+// import { fetchData } from '../helperFunctions'
 
 class AuthFormContainer extends React.Component {
   state = {
     email: "",
     password: "",
     isNewUser: false,
-    userId: null,
   };
 
   handleInputChange = (e) => {
@@ -44,16 +43,17 @@ class AuthFormContainer extends React.Component {
   };
 
   // ***** Signup functionality works correctly *****
-  // signupFetchRequest = async function (path, payload) {
-  //   const response = await fetch(path, payload);
-  //   const json = await response.json();
-  //   console.log(json.new_user);
-  //   this.setState({ userId: json.new_user.id });
-  //   // return that cookie?
-  // };
+  signupFetchRequest = async function (path, payload) {
+    const response = await fetch(path, payload);
+    const json = await response.json();
+    console.log(json.new_user);
+    this.props.logUserId(json.new_user.id)
+    // this.setState({ userId: json.new_user.id });
+    // return that cookie?
+  };
   handleSignupButtonClick = (e) => {
     e.preventDefault();
-    fetchData("LOG_IN","/signup", {
+    this.signupFetchRequest("/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
