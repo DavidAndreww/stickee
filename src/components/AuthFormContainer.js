@@ -1,5 +1,6 @@
 import React from "react";
 import AuthFormComponent from "./AuthFormComponent";
+import { fetchData } from '../helperFunctions'
 
 class LandingPage extends React.Component {
   state = {
@@ -43,16 +44,16 @@ class LandingPage extends React.Component {
   };
 
   // ***** Signup functionality works correctly *****
-  signupFetchRequest = async function (path, payload) {
-    const response = await fetch(path, payload);
-    const json = await response.json();
-    console.log(json.new_user);
-    this.setState({ userId: json.new_user.id });
-    // return that cookie?
-  };
+  // signupFetchRequest = async function (path, payload) {
+  //   const response = await fetch(path, payload);
+  //   const json = await response.json();
+  //   console.log(json.new_user);
+  //   this.setState({ userId: json.new_user.id });
+  //   // return that cookie?
+  // };
   handleSignupButtonClick = (e) => {
     e.preventDefault();
-    this.signupFetchRequest("/signup", {
+    fetchData("LOG_IN","/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

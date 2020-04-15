@@ -1,7 +1,12 @@
-const fetchData = async function (path, payload){
+export const fetchData = async function(action, path, payload) {
   const response = await fetch(path, payload)
-  const json = await response.json()
-  console.log(json)
-}
+  const json = response.json()
 
-export { fetchData }
+  switch (action){
+    case "LOG_IN":
+      console.log(json)
+      return 'hi'
+    default: 
+    return action
+  }
+}
