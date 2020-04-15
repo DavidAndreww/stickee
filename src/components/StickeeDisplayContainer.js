@@ -7,22 +7,22 @@ class StickeeDisplayContainer extends React.Component {
     user_id: 1,
   };
 
-  // fetchNotesOnLogin = async function (path, payload) {
-  //   const response = await fetch(path, payload);
-  //   const json = await response.json();
-  //   let data = [json][0].results;
-  //   let id = json.note_id;
-  //   this.setState({ notes: data, note_id: id });
-  // };
-  // componentDidMount() {
-  //   this.fetchNotesOnLogin("/stickee", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       user_id: this.state.user_id,
-  //     }),
-  //   });
-  // }
+  fetchNotesOnLogin = async function (path, payload) {
+    const response = await fetch(path, payload);
+    const json = await response.json();
+    let data = [json][0].results;
+    let id = json.note_id;
+    this.setState({ notes: data, note_id: id });
+  };
+  componentDidMount() {
+    this.fetchNotesOnLogin("/stickee", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: this.state.user_id,
+      }),
+    });
+  }
 
   // ***** Works *****
   fetchToDeleteStickee = async function (path, payload) {

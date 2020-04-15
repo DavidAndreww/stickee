@@ -10,4 +10,14 @@ const notes = (state = [], action) => {
   }
 };
 
-export default combineReducers({ notes });
+const isNewUser = (state = false, action) => {
+  switch(action.type){
+    case 'TOGGLE':
+      let toggleView = !state;
+      return state = toggleView;
+      default: 
+      return state;
+  }
+}
+
+export default combineReducers({ notes, isNewUser });
