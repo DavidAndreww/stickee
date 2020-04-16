@@ -12,6 +12,9 @@ const user_id = (state = 1, action) => {
 
 const notes = (state = [], action) => {
   switch (action.type) {
+    case "GET_NOTES":
+      console.log(action.value)
+      return action.value;
     case "ADD_NOTE":
       return [ ...state, action.value ]
     case "DELETE_NOTE":

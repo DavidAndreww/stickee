@@ -12,7 +12,8 @@ class StickeeDisplayContainer extends React.Component {
     const json = await response.json();
     let data = [json][0].results;
     let id = json.note_id;
-    this.setState({ notes: data, note_id: id });
+    this.props.getNotes(data)
+    // this.setState({ note_id: id });
   };
   componentDidMount() {
     this.fetchNotesOnLogin("/stickee", {
@@ -56,7 +57,7 @@ class StickeeDisplayContainer extends React.Component {
   render() {
     return (
       <StickeeDisplayComponent
-        notes={this.state.notes}
+        notes={this.props.notes}
         removeStickee={this.removeStickee}
       />
     );

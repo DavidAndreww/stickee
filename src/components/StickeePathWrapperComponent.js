@@ -1,5 +1,5 @@
 import React from "react";
-import StickeeDisplayContainer from "./StickeeDisplayContainer";
+import StickeeDisplayContainer from "../containers/StickeeDisplayContainer";
 import AddStickeeFormContainer from "./AddStickeeFormContainer";
 // import { fetchData } from "../helperFunctions";
 

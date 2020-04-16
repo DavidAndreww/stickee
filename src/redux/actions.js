@@ -5,4 +5,11 @@ const logUserId = (user_id) => {
   };
 };
 
-export { logUserId }
+const getNotes = (notes) => {
+  return {
+    type: 'GET_NOTES',
+    value: notes
+  }
+}
+
+export { logUserId, getNotes }
