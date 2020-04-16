@@ -60,8 +60,7 @@ class AddStickeeFormContainer extends React.Component {
     const response = await fetch(path, payload);
     const json = await response.json()
     
-    // need to pull new ID from backend response
-    console.log(json.results)
+    // need to pull new ID from backend response. getting correct value but cannot properly update local state    
     this.props.setNoteId(json.results)
   }
   handleSubmit = (e) => {
@@ -76,7 +75,6 @@ class AddStickeeFormContainer extends React.Component {
     });
     this.props.addNote(this.createNewStickeeObject())
 
-    // resetting note_id here breaks SST. need to be able to create note, and pull the insert ID from backend, set note_id to insertId + 1
     this.setState({
       message: ""
     });
