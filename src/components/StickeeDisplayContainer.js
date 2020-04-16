@@ -2,25 +2,20 @@ import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
 
 class StickeeDisplayContainer extends React.Component {
-  state = {
-    notes: [],
-    user_id: 1,
-  };
+  
 
   fetchNotesOnLogin = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
     let data = [json][0].results;
-    let id = json.note_id;
     this.props.getNotes(data)
-    // this.setState({ note_id: id });
   };
   componentDidMount() {
     this.fetchNotesOnLogin("/stickee", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: this.state.user_id,
+        user_id: this.props.user_id,
       }),
     });
   }
@@ -38,20 +33,10 @@ class StickeeDisplayContainer extends React.Component {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         note_id: id,
-        user_id: this.state.user_id,
+        user_id: this.props.user_id,
       }),
     });
-    let toBeDeleted = this.state.notes.filter(notes => notes.note_id !== id)
-    this.setState({notes: toBeDeleted})
-    
-    // * Don't know if i should be making double fetch requests or updating local state to reflect changes in browser
-    // this.fetchNotesOnLogin("/stickee", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     user_id: this.state.user_id,
-    //   }),
-    // });
+    this.props.deleteNote(id)
   };
 
   render() {

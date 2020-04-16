@@ -2,8 +2,8 @@ import { combineReducers } from "redux";
 
 const user_id = (state = 1, action) => {
   switch (action.type) {
-    case "LOG_USER_ID":
-      console.log("ID STORED IN STATE: ", action.value);
+    case "SET_USER_ID":
+      console.log(action.value)
       return (state = action.value);
     default:
       return state;
@@ -18,6 +18,7 @@ const notes = (state = [], action) => {
     case "ADD_NOTE":
       return [ ...state, action.value ]
     case "DELETE_NOTE":
+      console.log('delete sticky id: ', action.value)
       let currentList = [ ...state ]
       let newState = currentList.filter(note => note.note_id !== action.value)
       return newState;
