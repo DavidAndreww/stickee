@@ -19,6 +19,13 @@ const getNotes = (notes) => {
   }
 }
 
+const addNote = (note) => {
+  return {
+    type: "ADD_NOTE",
+    value: note
+  }
+}
+
 const deleteNote = (note_id) => {
   return {
     type: "DELETE_NOTE",
@@ -26,4 +33,4 @@ const deleteNote = (note_id) => {
   }
 }
 
-export { setUserId, setNoteId, getNotes, deleteNote }
+export { setUserId, setNoteId, getNotes, addNote, deleteNote }
