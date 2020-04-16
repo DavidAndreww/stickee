@@ -61,6 +61,18 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.do {
+  background: linear-gradient(145deg, #d51920, #fe1e27 );
+}
+.plan {
+  background: linear-gradient(145deg, #3941b8, #434dda );
+}
+.delegate {
+  background: linear-gradient(145deg, #e6da00, #ffff00);
+}
+.delete {
+  background: linear-gradient(145deg, #7a0013, #920016);
+}
 .stickee {
   width: 50px;
   height: 50px;
@@ -69,24 +81,32 @@
   text-align: center;
   margin: 5px;
   overflow-wrap: break-word;
-  border-radius: 10px;
-  box-shadow: 0px 2px 4px #5C6369;
 }
 .do .stickee {
   background-color:  rgb(245, 131, 136);
   border: 3px solid rgb(237, 28, 36);
+  border-radius: 10px;
+background: linear-gradient(145deg, #fe1e27, #d51920);
+box-shadow:  8px 8px 16px #931116, 
+             -8px -8px 16px #ff2732;
 }
 .plan .stickee {
-  background-color: rgb(115, 213, 255);
-  border: 3px solid rgb(63, 72, 204);
+  border-radius: 9px;
+background: linear-gradient(145deg, #434dda, #3941b8);
+box-shadow:  8px 8px 16px #272d7e, 
+             -8px -8px 16px #5763ff;
 }
 .delegate .stickee {
-  background-color: rgb(255, 248, 115);
-  border: 3px solid rgb(255, 242, 0);
+  border-radius: 9px;
+background: linear-gradient(145deg, #e6da00, #ffff00);
+box-shadow:  8px 8px 16px #9e9600, 
+             -8px -8px 16px #ffff00;
 }
 .delete .stickee {
-  background-color: rgb(203, 155, 129);
-  border: 3px solid rgb(136, 0, 21);
+  border-radius: 9px;
+background: linear-gradient(145deg, #7a0013, #920016);
+box-shadow:  8px 8px 16px #54000d, 
+             -8px -8px 16px #bc001d;
 }
 .toggle-dialog-btn {
   color: rgb(0, 255, 0);
