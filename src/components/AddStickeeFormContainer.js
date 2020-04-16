@@ -72,6 +72,7 @@ class AddStickeeFormContainer extends React.Component {
       }),
     });
 
+    // resetting note_id here breaks SST. need to be able to create note, and pull the insert ID from backend, set note_id to insertId + 1
     this.setState({
       message: "",
       note_id: this.state.note_id + 1,

@@ -34,7 +34,7 @@ const addNotes = (req, res, next) => {
     (err, results) => {
       if (err) return handleSQLError(res, err);
       return res.status(201).json({
-        results: results.affectedRows
+        results: results
       });
     }
   );
