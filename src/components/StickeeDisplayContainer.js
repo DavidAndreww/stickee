@@ -9,6 +9,7 @@ class StickeeDisplayContainer extends React.Component {
     const json = await response.json();
     let data = [json][0].results;
     this.props.getNotes(data)
+    this.props.setNoteId(json.note_id)
   };
   componentDidMount() {
     this.fetchNotesOnLogin("/stickee", {

@@ -10,6 +10,16 @@ const user_id = (state = 1, action) => {
   }
 };
 
+const note_id = (state = 1, action) => {
+  switch(action.type){
+    case "SET_NOTE_ID":
+      console.log('set note id: ', action.value)
+      return state = action.value
+      default: 
+      return state
+  }
+}
+
 const notes = (state = [], action) => {
   switch (action.type) {
     case "GET_NOTES":
@@ -27,4 +37,4 @@ const notes = (state = [], action) => {
   }
 };
 
-export default combineReducers({ user_id, notes });
+export default combineReducers({ user_id, note_id, notes });

@@ -1,6 +1,6 @@
 import React from "react";
 import StickeeDisplayContainer from "../containers/StickeeDisplayContainer";
-import AddStickeeFormContainer from "./AddStickeeFormContainer";
+import AddStickeeFormContainer from "../containers/AddStickeeFormContainer";
 // import { fetchData } from "../helperFunctions";
 
 const StickeePathWrapperComponent = () => {

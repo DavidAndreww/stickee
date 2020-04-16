@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getNotes, deleteNote } from '../redux/actions'
+import { getNotes, deleteNote, setNoteId } from '../redux/actions'
 import StickeeDisplayContainer from '../components/StickeeDisplayContainer'
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getNotes: (notes) => dispatch(getNotes(notes)),
-    deleteNote: (note_id) => dispatch(deleteNote(note_id))
+    deleteNote: (note_id) => dispatch(deleteNote(note_id)),
+    setNoteId: (note_id) => dispatch(setNoteId(note_id))
+
   }
 }
 

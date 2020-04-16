@@ -9,7 +9,7 @@ class AddStickeeFormContainer extends React.Component {
     message: "",
     important: true,
     urgent: true,
-    note_id: 1,
+    note_id: this.props.note_id,
     //needs to be generated from user login
     user_id: 1
   }
@@ -46,6 +46,7 @@ class AddStickeeFormContainer extends React.Component {
     !important && urgent && (type = "delegate");
     !important && !urgent && (type = "delete");
 
+    
     return {
       user_id: this.state.user_id,
       note_id: id,
