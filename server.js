@@ -13,7 +13,7 @@ const loginRouter = require('./backend/routes/loginRouter')
 app.use('/', loginRouter)
 app.use('/stickee', notesRouter)
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5005;
 
 app.listen(PORT, () => {
   console.log(
