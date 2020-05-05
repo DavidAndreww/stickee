@@ -9,7 +9,7 @@ class AddStickeeFormContainer extends React.Component {
     message: "",
     important: true,
     urgent: true,
-    // can't get note id to work
+    // note ID not matching up with entry in DB (off by 1)
     note_id: this.props.note_id,
     user_id: 1
   }
@@ -38,7 +38,6 @@ class AddStickeeFormContainer extends React.Component {
     const message = this.state.message;
     const urgent = this.state.urgent;
     const important = this.state.important;
-    const id = this.props.note_id;
     let type;
 
     important && urgent && (type = "do");
@@ -55,7 +54,7 @@ class AddStickeeFormContainer extends React.Component {
     };
   };
 
-  // need to use redux to pass in notes state and update locally to reflect in browser
+  // **** WORKS ****
   addStickeeFetchRequest = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json()

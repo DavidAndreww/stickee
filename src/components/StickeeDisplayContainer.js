@@ -3,7 +3,7 @@ import StickeeDisplayComponent from "./StickeeDisplayComponent";
 
 class StickeeDisplayContainer extends React.Component {
   
-
+  // ***** WORKS *****
   fetchNotesOnLogin = async function (path, payload) {
     const response = await fetch(path, payload);
     const json = await response.json();
