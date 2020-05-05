@@ -6,14 +6,22 @@ const { handleSQLError } = require("../sql/error");
 // JOIN TABLE funcionality on login, to create new table that holds only those notes associated with that users user_id?
 
 // @desc    verifies login credentials
-// @route   GET /
+// @route   POST /
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
-  let user = {
-    email: email,
-    password: password,
-  };
-  res.json({ message: "Logged in!", user: user });
+
+  pool.query(
+    "SELECT * FROM users WHERE email = '" + email + "' ",
+    (err, results) => {
+      if (err) return handleSQLError(res, err);
+      if(!results.length) return res.status(404).send('No matching users')
+      return res.status(201).json({
+        message: "Logged In",
+        user: results,
+      });
+    }
+  );
+
 };
 
 // @desc    adds new user info to db
