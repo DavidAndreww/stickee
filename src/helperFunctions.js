@@ -1,3 +1,5 @@
+// this file not in use. was trying to implement and use in all of the fetch requests but could not.
+
 export const fetchData = async (action, path, payload) => {
   const response = await fetch(path, payload);
   const json = response.json();
