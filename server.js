@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const colors = require("colors");
+// const colors = require("colors");
 
 dotenv.config({ path: "./backend/config/config.env" });
 
