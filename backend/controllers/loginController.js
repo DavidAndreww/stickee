@@ -16,9 +16,24 @@ const userLogin = (req, res, next) => {
     (err, results) => {
       if (err) return handleSQLError(res, err);
       if(!results.length) return res.status(404).json(`User with email "${email}" does not exist.`)
-      return res.status(201).json({
+
+      const hash = results[0]._password
+
+      bcrypt.compare(password, hash)
+      .then(result => {
+        console.log('hashed', result)
+        if (result === false) return res.status(400).send('Invalid password')
+      })
+
+      const userData = { ...results[0] }
+      userData._password = 'Redacted'
+
+      const token = jwt.sign(userData, 'secret')
+
+       res.status(201).json({
         message: "Logged In",
-        user: results,
+        user: userData,
+        token
       });
     }
   );
