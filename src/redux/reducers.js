@@ -3,7 +3,6 @@ import { combineReducers } from "redux";
 const user_id = (state = 1, action) => {
   switch (action.type) {
     case "SET_USER_ID":
-      console.log(action.value)
       return (state = action.value);
     default:
       return state;
