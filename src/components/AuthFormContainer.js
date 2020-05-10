@@ -28,8 +28,10 @@ class AuthFormContainer extends React.Component {
   loginFetchRequest = async function (path, payload){
     const response = await fetch(path, payload)
     const json = await response.json()
-    console.log(json)
     // document.cookie = json.token
+    if(json.token === undefined){
+      window.alert('Invalid Password')
+    } 
     if(json.token !== undefined){
       this.props.setUserId(json.user.id)
       this.props.history.push(`/stickee/${json.user.id}`)

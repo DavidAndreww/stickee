@@ -11,7 +11,7 @@ class AddStickeeFormContainer extends React.Component {
     urgent: true,
     // note ID not matching up with entry in DB (off by 1)
     note_id: this.props.note_id,
-    user_id: 1
+    user_id: this.props.user_id
   }
 
   toggleAddStickeeForm = (backbtn = null) => {
