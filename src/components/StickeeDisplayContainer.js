@@ -13,11 +13,14 @@ class StickeeDisplayContainer extends React.Component {
     console.log(json)
   };
   componentDidMount() {
+    let path = window.location.pathname.split('/')
+    let id = parseInt(path[path.length - 1])
+    console.log('path', id)
     this.fetchNotesOnLogin("/stickee", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: this.props.user_id,
+        user_id: id,
       }),
     });
   }
