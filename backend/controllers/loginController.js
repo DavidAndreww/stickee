@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const pool = require("../sql/connection");
 const { handleSQLError } = require("../sql/error");
 
@@ -15,29 +15,32 @@ const userLogin = (req, res, next) => {
     "SELECT * FROM users WHERE email = '" + email + "' ",
     (err, results) => {
       if (err) return handleSQLError(res, err);
-      if(!results.length) return res.status(404).json(`User with email "${email}" does not exist.`)
+      if (!results.length)
+        return res
+          .status(404)
+          .json(`User with email "${email}" does not exist.`);
 
-      const hash = results[0]._password
+      const hash = results[0]._password;
 
-      bcrypt.compare(password, hash)
-      .then(result => {
-        console.log('hashed', result)
-        if (result === false) return res.status(400).send('Invalid password')
-      })
+      bcrypt.compare(password, hash).then((result) => {
+        console.log("hashed", result);
+        if (result === false) {
+          return res.status(400).json({ error: "Invalid Password" });
+        } else if (result === true) {
+          const userData = { ...results[0] };
+          userData._password = "Redacted";
 
-      const userData = { ...results[0] }
-      userData._password = 'Redacted'
+          const token = jwt.sign(userData, "secret");
 
-      const token = jwt.sign(userData, 'secret')
-
-       return res.status(201).json({
-        message: "Logged In",
-        user: userData,
-        token
+          return res.status(201).json({
+            message: "Logged In",
+            user: userData,
+            token,
+          });
+        }
       });
     }
   );
-
 };
 
 // @desc    adds new user info to db
@@ -47,8 +50,7 @@ const newUserSignup = (req, res, next) => {
 
   const saltRounds = 10;
 
-  bcrypt.hash(password, saltRounds, function(err, hash){
-    
+  bcrypt.hash(password, saltRounds, function (err, hash) {
     pool.query(
       "INSERT INTO users (email, _password) VALUES ('" +
         email +
@@ -57,18 +59,17 @@ const newUserSignup = (req, res, next) => {
         "')",
       (err, results) => {
         if (err) {
-          if (err.code === 'ER_DUP_ENTRY') return res.status(409).send(`Email "${email}" is already taken.`)
+          if (err.code === "ER_DUP_ENTRY")
+            return res.status(409).send(`Email "${email}" is already taken.`);
           return handleSQLError(res, err);
-        } 
+        }
         return res.status(201).json({
           message: "User Successfully Created",
           new_user: { email: email, password: password, id: results.insertId },
         });
       }
     );
-  })
-
-
+  });
 };
 
 module.exports = { userLogin, newUserSignup };
