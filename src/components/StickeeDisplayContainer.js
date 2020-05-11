@@ -22,15 +22,15 @@ class StickeeDisplayContainer extends React.Component {
     });
   }
 
-  // ***** Works *****
-  fetchToDeleteStickee = async function (path, payload) {
-    const response = await fetch(path, payload);
-    const json = await response.json();
-    console.log(json);
-  };
-  removeStickee = (e) => {
+  // // ***** Works *****
+  // fetchToDeleteStickee = async function (path, payload) {
+  //   const response = await fetch(path, payload);
+  //   const json = await response.json();
+  //   console.log(json);
+  // };
+  removeStickee = async (e) => {
     const id = parseInt(e.target.id);
-    this.fetchToDeleteStickee("/stickee/", {
+    const response = await fetch("/stickee/", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -38,6 +38,8 @@ class StickeeDisplayContainer extends React.Component {
         user_id: this.props.user_id,
       }),
     });
+    const json = await response.json()
+    console.log(json)
     this.props.deleteNote(id)
   };
 
