@@ -7,18 +7,18 @@ const { handleSQLError } = require("../sql/error");
 // @desc    gets all stickee note entries
 // @route   POST /stickee
 const getNotes = (req, res, next) => {
-  let { user_id } = req.body;
-
+  let userId = req.params.id;
+  console.log(userId)
   pool.query(
     "SELECT note_id, note_message, note_type FROM notes WHERE notes.user_id = " +
-      user_id,
+      userId,
     (err, results) => {
       if (err) return handleSQLError(res, err);
       let localNoteId =
         results.length > 0 ? results[results.length - 1].note_id + 1 : 1;
       return res.status(201).json({
         results: results,
-        note_id: localNoteId,
+        next_note_id: localNoteId,
       });
     }
   );

@@ -9,19 +9,15 @@ class StickeeDisplayContainer extends React.Component {
     const json = await response.json();
     let data = [json][0].results;
     this.props.getNotes(data)
-    this.props.setNoteId(json.note_id)
+    this.props.setNoteId(json.next_note_id)
     console.log(json)
   };
   componentDidMount() {
     let path = window.location.pathname.split('/')
     let id = parseInt(path[path.length - 1])
-    console.log('path', id)
-    this.fetchNotesOnLogin("/stickee", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: id,
-      }),
+    this.fetchNotesOnLogin(`/stickee/${id}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json"},
     });
   }
 
@@ -33,7 +29,7 @@ class StickeeDisplayContainer extends React.Component {
   };
   removeStickee = (e) => {
     const id = parseInt(e.target.id);
-    this.fetchToDeleteStickee("/stickee", {
+    this.fetchToDeleteStickee("/stickee/", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
