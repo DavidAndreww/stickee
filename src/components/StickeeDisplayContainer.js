@@ -10,8 +10,9 @@ class StickeeDisplayContainer extends React.Component {
     let data = [json][0].results;
     this.props.getNotes(data)
     this.props.setNoteId(json.next_note_id)
-    console.log(json)
+    console.log('fetchNotesOnLogin', json)
   };
+  
   componentDidMount() {
     let path = window.location.pathname.split('/')
     let id = parseInt(path[path.length - 1])
