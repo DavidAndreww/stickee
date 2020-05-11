@@ -9,7 +9,6 @@ class AddStickeeFormContainer extends React.Component {
     message: "",
     important: true,
     urgent: true,
-    // note ID not matching up with entry in DB (off by 1)
     note_id: this.props.note_id,
     user_id: this.props.user_id
   }
@@ -54,24 +53,21 @@ class AddStickeeFormContainer extends React.Component {
     };
   };
 
-  // **** WORKS ****
-  addStickeeFetchRequest = async function (path, payload) {
-    const response = await fetch(path, payload);
-    const json = await response.json()
-    
-    // need to pull new ID from backend response. getting correct value but cannot properly update local state    
-    this.props.setNoteId(json.results)
-  }
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-
-    this.addStickeeFetchRequest("/stickee/add", {
+    // sends new note object to database
+    const response = await fetch("/stickee/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         newNote: this.createNewStickeeObject(),
       }),
     });
+
+    const json = await response.json()
+    // saves note Id in redux state
+    this.props.setNoteId(json.results)
+    // updates redux state with new note, so page will re-render with new note
     this.props.addNote(this.createNewStickeeObject())
 
     this.setState({
