@@ -25,10 +25,22 @@ class AuthFormContainer extends React.Component {
     }
   };
 
-  loginFetchRequest = async function (path, payload){
-    const response = await fetch(path, payload)
+  // sends user data to *userLogIn router 
+  handleLoginButtonClick = async (e) => {
+    // prevents default form action
+    e.preventDefault();
+    // async fetch requeset with user email and password 
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    });
+    // server response: contains jwebtoken, user data object {id, email, _password}
     const json = await response.json()
-    // document.cookie = json.token
+
     if(json.token === undefined){
       window.alert('Invalid Password')
     } 
@@ -36,11 +48,14 @@ class AuthFormContainer extends React.Component {
       this.props.setUserId(json.user.id)
       this.props.history.push(`/stickee/${json.user.id}`)
     }
-  }
+  };
 
-  handleLoginButtonClick = (e) => {
+  // sends data to *newUserSignup router 
+  handleSignupButtonClick = async (e) => {
+    // prevents default form action
     e.preventDefault();
-    this.loginFetchRequest("/", {
+    // async fetch request with user email, password
+    const response = await fetch("/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -48,30 +63,14 @@ class AuthFormContainer extends React.Component {
         password: this.state.password,
       }),
     });
-  };
 
-  // ***** Signup functionality works correctly *****
-  signupFetchRequest = async function (path, payload) {
-    const response = await fetch(path, payload);
-    const json = await response.json();
+    const json = await response.json()
     this.props.setUserId(json.new_user.id)
-    // return that cookie?
-  };
-  handleSignupButtonClick = (e) => {
-    e.preventDefault();
-    this.signupFetchRequest("/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-      }),
-    });
   };
 
   render() {
     return (
-      <AuthFormComponent
+      <AuthFormComponent 
         handleLoginButtonClick={this.handleLoginButtonClick}
         handleSignupButtonClick={this.handleSignupButtonClick}
         handleInputChange={this.handleInputChange}
