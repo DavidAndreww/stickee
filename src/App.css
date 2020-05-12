@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background-color: cadetblue;
+  background-color: white;
   /* background-color: rgba(109, 248, 179, 0.993); */
 }
 
@@ -14,21 +14,26 @@ body {
   width: 100vw;
   max-width: 500px;
   height: 100vh;
-  max-height: 650px;
+  /* max-height: 650px; */ 
   margin-left: auto;
   margin-right: auto;
+  border: 2px solid black;
 }
 
 /** header component **/
 .header-display-component {
   text-align: center;
   font-family: 'Coustard', serif;
+  background: cadetblue;
 
 }
 
 /** wraps entire '/' path **/
 .landing-page-component {
+  margin-top: 30%;
+  margin-bottom: 50%;
   text-align: center;
+  /* border: 1px solid red; */
 }
 
 .login-form {
@@ -48,6 +53,7 @@ body {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: 250px 250px;
+  /* grid-template-rows: 45vh 45vh; */
 }
 
 .individual-priority-display-field {
