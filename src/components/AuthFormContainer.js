@@ -57,7 +57,8 @@ class AuthFormContainer extends React.Component {
 
   // sends data to *newUserSignup router 
   handleSignupButtonClick = async (e) => {
-    // prevents default form action
+    try{
+      // prevents default form action
     e.preventDefault();
     // async fetch request with user email, password
     const response = await fetch("/signup", {
@@ -71,6 +72,9 @@ class AuthFormContainer extends React.Component {
 
     const json = await response.json()
     this.props.setUserId(json.new_user.id)
+    } catch (err){
+      window.alert(`Unexpected error: ${err}`)
+    }
   };
 
   render() {
