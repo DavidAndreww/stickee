@@ -29,18 +29,22 @@ class StickeeDisplayContainer extends React.Component {
   //   console.log(json);
   // };
   removeStickee = async (e) => {
-    const id = parseInt(e.target.id);
-    const response = await fetch("/stickee/", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        note_id: id,
-        user_id: this.props.user_id,
-      }),
-    });
-    const json = await response.json()
-    console.log(json)
-    this.props.deleteNote(id)
+    try {
+      const id = parseInt(e.target.id);
+      const response = await fetch("/stickee/", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          note_id: id,
+          user_id: this.props.user_id,
+        }),
+      });
+      const json = await response.json()
+      console.log(json)
+      this.props.deleteNote(id)
+    } catch (err){
+      window.alert(`Unexpected error: ${err}`)
+    }
   };
 
   render() {
