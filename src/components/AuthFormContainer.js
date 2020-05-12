@@ -27,26 +27,31 @@ class AuthFormContainer extends React.Component {
 
   // sends user data to *userLogIn router 
   handleLoginButtonClick = async (e) => {
-    // prevents default form action
-    e.preventDefault();
-    // async fetch requeset with user email and password 
-    const response = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-      }),
-    });
-    // server response: contains jwebtoken, user data object {id, email, _password}
-    const json = await response.json()
+    try{
+      // prevents default form action
+      e.preventDefault();
+      // async fetch requeset with user email and password 
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+        }),
+      });
+      // server response: contains jwebtoken, user data object {id, email, _password}
+      const json = await response.json()
+  
+      if(json.token === undefined){
+        window.alert('Invalid Password')
+      } 
+      if(json.token !== undefined){
+        this.props.setUserId(json.user.id)
+        this.props.history.push(`/stickee/${json.user.id}`)
+      }
 
-    if(json.token === undefined){
-      window.alert('Invalid Password')
-    } 
-    if(json.token !== undefined){
-      this.props.setUserId(json.user.id)
-      this.props.history.push(`/stickee/${json.user.id}`)
+    } catch(err){
+      window.alert(`Unexpected error: ${err}`)
     }
   };
 
