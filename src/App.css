@@ -4,12 +4,13 @@
   box-sizing: border-box;
 }
 body {
-  background-color: white;
+  background-color: rgb(32, 32, 32);
   /* background-color: rgba(109, 248, 179, 0.993); */
 }
 
 /** wraps entire application **/
 .app {
+  /* background: white; */
   /* border: 1px solid black; */
   width: 100vw;
   max-width: 500px;
@@ -30,6 +31,7 @@ body {
 
 /** wraps entire '/' path **/
 .landing-page-component {
+  background: white;
   margin-top: 30%;
   margin-bottom: 50%;
   text-align: center;
