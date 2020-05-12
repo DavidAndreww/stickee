@@ -18,7 +18,7 @@ body {
   /* max-height: 650px; */ 
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid black;
+  border: 2px dotted yellow;
 }
 
 /** header component **/
@@ -47,6 +47,9 @@ body {
 /* wraps entire '/stickee' path */
 .main-display-component {
   text-align: center;
+  border: 1px dotted rgb(230, 224, 224);
+  height: initial;
+
 }
 
 /*  */
@@ -54,11 +57,12 @@ body {
   /* border: 1px solid black; */
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 250px 250px;
+  /* grid-template-rows: 250px 250px; */
   /* grid-template-rows: 45vh 45vh; */
 }
 
 .individual-priority-display-field {
+  min-height: 200px;
   border: 1px solid rgb(31, 16, 16);
   margin: 5px;
   background-color: white;
