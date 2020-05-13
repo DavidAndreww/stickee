@@ -50,7 +50,7 @@ body {
 /* wraps entire '/stickee' path */
 .main-display-component {
   text-align: center;
-  border: 1px dotted rgb(230, 224, 224);
+  /* border: 1px dotted rgb(230, 224, 224); */
   height: initial;
 
 }
@@ -119,11 +119,9 @@ body {
   color: rgb(0, 255, 0);
   background: rgb(34, 177, 76);
   border: 2px solid rgb(0, 255, 0);
-  width: 100%;
-  height: 50px;
-  max-height: 50px;
-  font-size: 40px;
-  margin-top: 5px;
+  width: 97%;
+  height: 65px;
+  font-size: 55px;
 }
 
 /* wraps entire popup dialog box */
