@@ -10,15 +10,13 @@ body {
 
 /** wraps entire application **/
 .app {
-  /* background: white; */
   /* border: 1px solid black; */
   width: 100vw;
   max-width: 500px;
-  height: 100vh;
-  /* max-height: 650px; */ 
+  height: 100vh; 
   margin-left: auto;
   margin-right: auto;
-  border: 2px dotted yellow;
+  border: 1px dotted yellow;
 }
 
 /** header component **/
@@ -31,7 +29,7 @@ body {
 
 /** wraps entire '/' path **/
 .landing-page-component {
-  background: white;
+  background: rgb(32,32,32,);
   margin-top: 30%;
   margin-bottom: 50%;
   text-align: center;
@@ -41,6 +39,9 @@ body {
 .login-form {
   display: flex;
   flex-direction: column;
+}
+.text-field{
+  background-color: white;
 }
 /* onboarding css will go here */
 
@@ -54,11 +55,10 @@ body {
 
 /*  */
 .priority-display-field-container {
-  /* border: 1px solid black; */
   display: grid;
   grid-template-columns: 50% 50%;
   /* grid-template-rows: 250px 250px; */
-  /* grid-template-rows: 45vh 45vh; */
+  grid-template-rows: 40vh 40vh;
 }
 
 .individual-priority-display-field {

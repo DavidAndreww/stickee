@@ -17,6 +17,7 @@ const AuthFormComponent = ({
         className="login-form"
       >
         <TextField
+          style={{ backgroundColor: "white", borderRadius: "5px", marginBottom: "2px" }}
           required
           onChange={handleInputChange}
           value={email}
@@ -25,18 +26,20 @@ const AuthFormComponent = ({
           type="text"
         />
         <TextField
+          style={{ backgroundColor: "white", borderRadius: "5px", marginBottom: "15px" }}
           required
+          classname="text-field"
           onChange={handleInputChange}
           value={password}
           name="password"
           label="password"
           type="text"
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button style={{ marginBottom: "2px" }} type="submit" variant="contained" color="primary">
           {isNewUser ? "Sign Up" : "Log In"}
         </Button>
       </form>
-      <Button onClick={toggleNewUserView} color="secondary" variant="contained">
+      <Button style={{ width: "100%" }} onClick={toggleNewUserView} color="secondary" variant="contained">
         {isNewUser ? "Back To Login" : "Create User"}
       </Button>
     </Container>
