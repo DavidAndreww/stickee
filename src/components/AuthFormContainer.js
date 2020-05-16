@@ -48,6 +48,8 @@ class AuthFormContainer extends React.Component {
       if(json.token !== undefined){
         this.props.setUserId(json.user.id)
         document.cookie = json.token
+        // document.frontCookie = 'loggedIn=true'
+        console.log(document.frontCookie)
         console.log('set cookie: ', document.cookie)
         this.props.history.push(`/stickee/${json.user.id}`)
       }

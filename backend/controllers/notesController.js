@@ -8,7 +8,7 @@ const { handleSQLError } = require("../sql/error");
 // @route   GET /stickee
 const getNotes = (req, res, next) => {
   let userId = req.params.id;
-  console.log(userId)
+  console.log(req.user.userData.id)
   pool.query(
     "SELECT note_id, note_message, note_type FROM notes WHERE notes.user_id = " +
       userId,
