@@ -7,7 +7,6 @@ const { handleSQLError } = require("../sql/error");
 // @route   GET /stickee
 const getNotes = (req, res, next) => {
   let userId = req.params.id;
-  console.log(userId)
   // is it better to use the decoded id from JWT.verify?
   console.log(req.user.userData.id)
   pool.query(
@@ -45,8 +44,6 @@ const addNotes = (req, res) => {
 // @route   DELETE /stickee
 const deleteNotes = (req, res, next) => {
   let { note_id, user_id } = req.body;
-  console.log('note_id', note_id)
-  console.log('user_id', user_id)
 
   pool.query(
     "DELETE FROM notes WHERE user_id = " + user_id + " && note_id = " + note_id,

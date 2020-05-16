@@ -10,7 +10,6 @@ class StickeeDisplayContainer extends React.Component {
     let data = [json][0].results;
     this.props.getNotes(data)
     this.props.setNoteId(json.next_note_id)
-    console.log('fetchNotesOnLogin', json)
   };
   
   componentDidMount() {
@@ -39,8 +38,7 @@ class StickeeDisplayContainer extends React.Component {
           user_id: this.props.user_id,
         }),
       });
-      const json = await response.json()
-      console.log(json)
+      // const json = await response.json()
       this.props.deleteNote(id)
     } catch (err){
       window.alert(`Unexpected error: ${err}`)

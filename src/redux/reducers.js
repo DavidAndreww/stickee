@@ -23,7 +23,6 @@ const user_id = (state = 1, action) => {
 const note_id = (state = 1, action) => {
   switch (action.type) {
     case "SET_NOTE_ID":
-      console.log("set note id: ", action.value);
       return (state = action.value);
     default:
       return state;
@@ -33,7 +32,6 @@ const note_id = (state = 1, action) => {
 const notes = (state = [], action) => {
   switch (action.type) {
     case "GET_NOTES":
-      console.log(action.value);
       return action.value;
     case "ADD_NOTE":
       return [...state, action.value];
