@@ -1,5 +1,6 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
+import cookie from "cookie"
 
 class StickeeDisplayContainer extends React.Component {
   
@@ -19,15 +20,10 @@ class StickeeDisplayContainer extends React.Component {
     this.fetchNotesOnLogin(`/stickee/${id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json"},
+      authorization: document.cookie
     });
   }
 
-  // // ***** Works *****
-  // fetchToDeleteStickee = async function (path, payload) {
-  //   const response = await fetch(path, payload);
-  //   const json = await response.json();
-  //   console.log(json);
-  // };
   removeStickee = async (e) => {
     try {
       const id = parseInt(e.target.id);

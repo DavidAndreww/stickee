@@ -27,7 +27,6 @@ const notes = (state = [], action) => {
     case "ADD_NOTE":
       return [ ...state, action.value ]
     case "DELETE_NOTE":
-      console.log('delete sticky id: ', action.value)
       let currentList = [ ...state ]
       let newState = currentList.filter(note => note.note_id !== action.value)
       return newState;

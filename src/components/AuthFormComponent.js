@@ -28,7 +28,6 @@ const AuthFormComponent = ({
         <TextField
           style={{ backgroundColor: "white", borderRadius: "5px", marginBottom: "15px" }}
           required
-          classname="text-field"
           onChange={handleInputChange}
           value={password}
           name="password"
