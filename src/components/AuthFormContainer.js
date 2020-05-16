@@ -31,7 +31,7 @@ class AuthFormContainer extends React.Component {
       // prevents default form action
       e.preventDefault();
       // async fetch requeset with user email and password 
-      const response = await fetch("/", {
+      const response = await fetch("/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -41,7 +41,7 @@ class AuthFormContainer extends React.Component {
       });
       // server response: contains jwebtoken, user data object {id, email, _password}
       const json = await response.json()
-  
+      console.log('Json response',json)
       if(json.token === undefined){
         window.alert('Invalid Password')
       } 
@@ -51,10 +51,10 @@ class AuthFormContainer extends React.Component {
         this.props.history.push(`/stickee/${json.user.id}`)
         this.props.setUserId(json.user.id)
       }
-
     } catch(err){
       window.alert(`Unexpected error: ${err}`)
     }
+    console.log('log test')
   };
 
   // sends data to *newUserSignup router 
