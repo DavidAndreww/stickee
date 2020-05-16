@@ -1,4 +1,3 @@
-const mysql = require("mysql");
 const pool = require("../sql/connection");
 const { handleSQLError } = require("../sql/error");
 
@@ -8,6 +7,8 @@ const { handleSQLError } = require("../sql/error");
 // @route   GET /stickee
 const getNotes = (req, res, next) => {
   let userId = req.params.id;
+  console.log(userId)
+  // is it better to use the decoded id from JWT.verify?
   console.log(req.user.userData.id)
   pool.query(
     "SELECT note_id, note_message, note_type FROM notes WHERE notes.user_id = " +
@@ -26,7 +27,7 @@ const getNotes = (req, res, next) => {
 
 // @desc    adds new stickee note
 // @route    POST /stickee/add
-const addNotes = (req, res, next) => {
+const addNotes = (req, res) => {
   const { user_id, note_id, note_message, note_type } = req.body.newNote;
   
   pool.query(

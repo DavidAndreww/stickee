@@ -58,7 +58,10 @@ class AddStickeeFormContainer extends React.Component {
     // sends new note object to database
     const response = await fetch("/stickee/add", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        'Authorization': document.cookie
+    },
       body: JSON.stringify({
         newNote: this.createNewStickeeObject(),
       }),

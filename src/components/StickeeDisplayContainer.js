@@ -30,7 +30,10 @@ class StickeeDisplayContainer extends React.Component {
       const id = parseInt(e.target.id);
       const response = await fetch("/stickee/", {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          'Authorization': document.cookie
+      },
         body: JSON.stringify({
           note_id: id,
           user_id: this.props.user_id,
