@@ -1,11 +1,18 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
-import AuthFormContainer from './containers/AuthFormContainer';
+import AuthFormContainer from "./containers/AuthFormContainer";
 import Onboarding from "./components/Onboarding";
-import StickeePathWrapperComponent from './components/StickeePathWrapperComponent';
+import StickeePathWrapperComponent from "./components/StickeePathWrapperComponent";
+import cookie from "cookie";
 
 const checkAuth = () => {
-  //autorization logic here
+  const cookies = cookie.parse(document.cookie);
+  if (cookies.loggedIn === true) {
+    return true;
+  } else if (cookies.loggedIn === false) {
+    window.alert("Unauthorized access");
+    return false;
+  }
 };
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
@@ -13,7 +20,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         checkAuth() ? <Component {...props} /> : <Redirect to="/" />
       }
     />
