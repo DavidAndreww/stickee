@@ -15,7 +15,7 @@ class StickeeDisplayContainer extends React.Component {
   componentDidMount() {
     let path = window.location.pathname.split('/')
     let id = parseInt(path[path.length - 1])
-    this.fetchNotesOnLogin(`/stickee/${id}`, {
+    this.fetchNotesOnLogin(`/api/stickee/${id}`, {
       method: "GET",
       headers: { 
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ class StickeeDisplayContainer extends React.Component {
   removeStickee = async (e) => {
     try {
       const id = parseInt(e.target.id);
-      const response = await fetch("/stickee/", {
+      const response = await fetch("/api/stickee/", {
         method: "DELETE",
         headers: { 
           "Content-Type": "application/json",
