@@ -30,7 +30,9 @@ const userLogin = (req, res, next) => {
           const userData = { ...results[0] };
           userData._password = "Redacted";
 
-          const token = jwt.sign(userData, "secret");
+          const token = jwt.sign({
+            data: userData
+          }, 'secret', { expiresIn: '1h' });
 
           return res.status(201).json({
             message: "Logged In",

@@ -21,7 +21,7 @@ class StickeeDisplayContainer extends React.Component {
       method: "GET",
       headers: { 
         "Content-Type": "application/json",
-        'Authorization': 'Bearer ' + document.cookie
+        'Authorization': document.cookie
     },
     });
   }

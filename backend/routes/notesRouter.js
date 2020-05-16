@@ -5,8 +5,8 @@ const { authenticate } = require('../middleware/index')
 
 router.get('/:id', authenticate, getNotes)
 
-router.post('/add', addNotes)
+router.post('/add', authenticate, addNotes)
 
-router.delete('/', deleteNotes)
+router.delete('/', authenticate, deleteNotes)
 
 module.exports = router;
