@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Router from "./Router";
-import Header from "./components/Header";
+import Header from './containers/HeaderContainer';
 
 function App() {
   return (

@@ -46,10 +46,10 @@ class AuthFormContainer extends React.Component {
         window.alert('Invalid Password')
       } 
       if(json.token !== undefined){
-        this.props.setUserId(json.user.id)
         document.cookie = json.token
         console.log('set cookie: ', document.cookie)
         this.props.history.push(`/stickee/${json.user.id}`)
+        this.props.setUserId(json.user.id)
       }
 
     } catch(err){
