@@ -40,7 +40,7 @@ class AuthFormContainer extends React.Component {
         }),
       });
       // server response: contains jwebtoken, user data object {id, email, _password}
-      const json = await response.json()
+      const json = await response.text()
       console.log('Json response',json)
       if(json.token === undefined){
         window.alert('Invalid Password')
