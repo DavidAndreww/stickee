@@ -1,6 +1,5 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
-import cookie from "cookie"
 
 class StickeeDisplayContainer extends React.Component {
   
