@@ -19,8 +19,10 @@ class StickeeDisplayContainer extends React.Component {
     let id = parseInt(path[path.length - 1])
     this.fetchNotesOnLogin(`/stickee/${id}`, {
       method: "GET",
-      headers: { "Content-Type": "application/json"},
-      authorization: document.cookie
+      headers: { 
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + document.cookie
+    },
     });
   }
 
