@@ -19,7 +19,7 @@ class StickeeDisplayContainer extends React.Component {
       method: "GET",
       headers: { 
         "Content-Type": "application/json",
-        'Authorization': document.cookie
+        "Authorization": document.cookie
     },
     });
   }
@@ -38,7 +38,7 @@ class StickeeDisplayContainer extends React.Component {
           user_id: this.props.user_id,
         }),
       });
-      // const json = await response.json()
+      const json = await response.json()
       this.props.deleteNote(id)
     } catch (err){
       window.alert(`Unexpected error: ${err}`)
