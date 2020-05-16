@@ -17,10 +17,10 @@ class AuthFormContainer extends React.Component {
   toggleNewUserView = () => {
     const isNewUser = !this.state.isNewUser;
     if (isNewUser) {
-      this.setState({ isNewUser });
+      this.setState({ email: '', password: '', isNewUser });
       this.props.history.push("/signup");
     } else {
-      this.setState({ isNewUser });
+      this.setState({ email: '', password: '', isNewUser });
       this.props.history.push("/");
     }
   };
@@ -73,7 +73,12 @@ class AuthFormContainer extends React.Component {
     });
 
     const json = await response.json()
-    this.props.setUserId(json.new_user.id)
+    if (json.new_user.id){
+      this.props.setUserId(json.new_user.id)
+      window.alert('Success! Please log in to continue')
+      this.toggleNewUserView()
+    }
+    
     } catch (err){
       window.alert(`Unexpected error: ${err}`)
     }
