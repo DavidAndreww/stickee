@@ -4,13 +4,13 @@ const dotenv = require("dotenv");
 const notesRouter = require("./backend/routes/notesRouter");
 const loginRouter = require("./backend/routes/loginRouter");
 const path = require("path");
-const cors = require('cors')
+const cors = require("cors");
 const PORT = process.env.PORT || 8000;
 
 dotenv.config({ path: "./backend/config/config.env" });
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -18,12 +18,10 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
-})
+});
 
+app.use(express.static("build"));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("build"));
-}
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
