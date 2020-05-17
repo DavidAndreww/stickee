@@ -5,7 +5,7 @@ const notesRouter = require("./backend/routes/notesRouter");
 const loginRouter = require("./backend/routes/loginRouter");
 const path = require("path");
 const cors = require("cors");
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 dotenv.config({ path: "./backend/config/config.env" });
 
@@ -20,9 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const notesRouter = require("./backend/routes/notesRouter");
-const loginRouter = require("./backend/routes/loginRouter");
-
 app.use("/stickee", notesRouter);
 app.use("/", loginRouter);
 
@@ -34,8 +31,6 @@ app.use("/", loginRouter);
 //     res.sendFile(path.resolve(__dirname, "build", "index.html"));
 //   });
 // }
-
-const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(
