@@ -10,8 +10,8 @@ app.use(express.json());
 const notesRouter = require("./backend/routes/notesRouter");
 const loginRouter = require("./backend/routes/loginRouter");
 
-app.use("/", loginRouter);
 app.use("/stickee", notesRouter);
+app.use("/", loginRouter);
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("./build"));
