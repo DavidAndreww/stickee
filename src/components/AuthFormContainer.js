@@ -1,5 +1,6 @@
 import React from "react";
 import AuthFormComponent from "./AuthFormComponent";
+import path from '../pathVar'
 
 class AuthFormContainer extends React.Component {
   state = {
@@ -31,7 +32,7 @@ class AuthFormContainer extends React.Component {
       // prevents default form action
       e.preventDefault();
       // async fetch requeset with user email and password 
-      const response = await fetch("http://localhost:8000/api", {
+      const response = await fetch(`${path}/api`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -63,7 +64,7 @@ class AuthFormContainer extends React.Component {
       // prevents default form action
     e.preventDefault();
     // async fetch request with user email, password
-    const response = await fetch("/signup", {
+    const response = await fetch(`${path}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

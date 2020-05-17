@@ -11,6 +11,15 @@ dotenv.config({ path: "./backend/config/config.env" });
 
 app.use(express.json());
 app.use(cors())
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+})
+
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("build"));
