@@ -31,14 +31,15 @@ class AuthFormContainer extends React.Component {
       // prevents default form action
       e.preventDefault();
       // async fetch requeset with user email and password 
-      const response = await fetch("/", {
+      const response = await fetch("http://localhost:8000/api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: this.state.email,
           password: this.state.password,
-        })
+        }),
       });
+      console.log(response)
       // server response: contains jwebtoken, user data object {id, email, _password}
       const json = await response.json()
       console.log('Json response',json)
@@ -54,7 +55,6 @@ class AuthFormContainer extends React.Component {
     } catch(err){
       window.alert(`Unexpected error: ${err}`)
     }
-    console.log('log test')
   };
 
   // sends data to *newUserSignup router 

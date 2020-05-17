@@ -56,7 +56,7 @@ class AddStickeeFormContainer extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     // sends new note object to database
-    const response = await fetch("/stickee/add", {
+    const response = await fetch("http://localhost:8000/stickee/add", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",

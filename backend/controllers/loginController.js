@@ -9,16 +9,14 @@ const { handleSQLError } = require("../sql/error");
 // @route   POST /
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
-  // res.send({email, password})
+  console.log(email, password)
 
   pool.query(
     "SELECT * FROM users WHERE email = '" + email + "' ",
     (err, results) => {
       if (err) return handleSQLError(res, err);
       if (!results.length)
-        return res
-          .status(404)
-          .json(`User with email "${email}" does not exist.`);
+        return res.status(404).send(`User with email "${email}" does not exist.`);
 
       const hash = results[0]._password;
 
