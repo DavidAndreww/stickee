@@ -26,8 +26,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
+app.use("/api/stickee", notesRouter);
 app.use("/api/", loginRouter);
-app.use("/stickee", notesRouter);
 
 app.listen(PORT, () => {
   console.log(

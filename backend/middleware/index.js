@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 const authenticate = (req, res, next) => {
   // token is equal to token value in request header key titled authorization
-  const token = req.headers.authorization;
+  const token = req.headers.Authorization;
   console.log(token.blue)
   try {
     let decoded = jwt.verify(token, "secret");

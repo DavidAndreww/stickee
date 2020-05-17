@@ -32,7 +32,7 @@ class AuthFormContainer extends React.Component {
       // prevents default form action
       e.preventDefault();
       // async fetch requeset with user email and password
-      const response = await fetch(`${path}/api`, {
+      const response = await fetch(`${path}/api/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -48,10 +48,10 @@ class AuthFormContainer extends React.Component {
         window.alert("Invalid Password");
       }
       if (json.token !== undefined) {
-        document.cookie = json.token;
+        document.cookie = `token=${json.token}`;
         this.props.logIn();
-        this.props.history.push(`/stickee/${json.user.id}`);
         this.props.setUserId(json.user.id);
+        this.props.history.push(`/stickee/${json.user.id}`);
       }
     } catch (err) {
       window.alert(`Unexpected error: ${err}`);

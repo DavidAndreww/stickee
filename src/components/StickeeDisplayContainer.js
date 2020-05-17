@@ -20,11 +20,11 @@ class StickeeDisplayContainer extends React.Component {
     console.log("authorization", document.cookie);
     let pathName = window.location.pathname.split("/");
     let id = parseInt(pathName[pathName.length - 1]);
-    this.fetchNotesOnLogin(`${path}/stickee/${id}`, {
+    this.fetchNotesOnLogin(`${path}/api/stickee/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: document.cookie,
+        "Authorization": document.cookie,
       },
     });
   }
@@ -32,7 +32,7 @@ class StickeeDisplayContainer extends React.Component {
   removeStickee = async (e) => {
     try {
       const id = parseInt(e.target.id);
-      const response = await fetch(`${path}/stickee`, {
+      const response = await fetch(`${path}/stickee/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
