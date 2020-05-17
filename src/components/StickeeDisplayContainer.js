@@ -5,11 +5,15 @@ class StickeeDisplayContainer extends React.Component {
   
   // ***** WORKS *****
   fetchNotesOnLogin = async function (path, payload) {
-    const response = await fetch(path, payload);
+    try {const response = await fetch(path, payload);
     const json = await response.json();
     let data = [json][0].results;
     this.props.getNotes(data)
     this.props.setNoteId(json.next_note_id)
+    }
+    catch (err) {
+      window.alert(`Unexpected error while fetching data: ${err}`)
+    }
   };
   
   componentDidMount() {
