@@ -1,6 +1,6 @@
 import React from "react";
 import AuthFormComponent from "./AuthFormComponent";
-import path from '../pathVar'
+import path from "../pathVar";
 
 class AuthFormContainer extends React.Component {
   state = {
@@ -18,20 +18,20 @@ class AuthFormContainer extends React.Component {
   toggleNewUserView = () => {
     const isNewUser = !this.state.isNewUser;
     if (isNewUser) {
-      this.setState({ email: '', password: '', isNewUser });
+      this.setState({ email: "", password: "", isNewUser });
       this.props.history.push("/signup");
     } else {
-      this.setState({ email: '', password: '', isNewUser });
+      this.setState({ email: "", password: "", isNewUser });
       this.props.history.push("/");
     }
   };
 
-  // sends user data to *userLogIn router 
+  // sends user data to *userLogIn router
   handleLoginButtonClick = async (e) => {
-    try{
+    try {
       // prevents default form action
       e.preventDefault();
-      // async fetch requeset with user email and password 
+      // async fetch requeset with user email and password
       const response = await fetch(`${path}/api`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -40,54 +40,53 @@ class AuthFormContainer extends React.Component {
           password: this.state.password,
         }),
       });
-      console.log(response)
+      console.log(response);
       // server response: contains jwebtoken, user data object {id, email, _password}
-      const json = await response.json()
-      console.log('Json response',json)
-      if(json.token === undefined){
-        window.alert('Invalid Password')
-      } 
-      if(json.token !== undefined){
-        document.cookie = json.token
-        this.props.logIn()
-        this.props.history.push(`/stickee/${json.user.id}`)
-        this.props.setUserId(json.user.id)
+      const json = await response.json();
+      console.log("Json response", json);
+      if (json.token === undefined) {
+        window.alert("Invalid Password");
       }
-    } catch(err){
-      window.alert(`Unexpected error: ${err}`)
+      if (json.token !== undefined) {
+        document.cookie = json.token;
+        this.props.logIn();
+        this.props.history.push(`/stickee/${json.user.id}`);
+        this.props.setUserId(json.user.id);
+      }
+    } catch (err) {
+      window.alert(`Unexpected error: ${err}`);
     }
   };
 
-  // sends data to *newUserSignup router 
+  // sends data to *newUserSignup router
   handleSignupButtonClick = async (e) => {
-    try{
+    try {
       // prevents default form action
-    e.preventDefault();
-    // async fetch request with user email, password
-    const response = await fetch(`${path}/api/signup`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-      }),
-    });
+      e.preventDefault();
+      // async fetch request with user email, password
+      const response = await fetch(`${path}/api/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+        }),
+      });
 
-    const json = await response.json()
-    if (json.new_user.id){
-      this.props.setUserId(json.new_user.id)
-      window.alert('Success! Please log in to continue')
-      this.toggleNewUserView()
-    }
-    
-    } catch (err){
-      window.alert(`Unexpected error: ${err}`)
+      const json = await response.json();
+      if (json.new_user.id) {
+        this.props.setUserId(json.new_user.id);
+        window.alert("Success! Please log in to continue");
+        this.toggleNewUserView();
+      }
+    } catch (err) {
+      window.alert(`Unexpected error: ${err}`);
     }
   };
 
   render() {
     return (
-      <AuthFormComponent 
+      <AuthFormComponent
         handleLoginButtonClick={this.handleLoginButtonClick}
         handleSignupButtonClick={this.handleSignupButtonClick}
         handleInputChange={this.handleInputChange}
