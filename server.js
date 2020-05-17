@@ -20,16 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 
-<<<<<<< HEAD
-app.use(express.static("build"));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
-});
-
-app.use("/api/stickee", notesRouter);
-app.use("/api/", loginRouter);
-=======
 const notesRouter = require("./backend/routes/notesRouter");
 const loginRouter = require("./backend/routes/loginRouter");
 
@@ -46,7 +36,6 @@ app.use("/", loginRouter);
 // }
 
 const PORT = process.env.PORT || 5000;
->>>>>>> localMaster
 
 app.listen(PORT, () => {
   console.log(

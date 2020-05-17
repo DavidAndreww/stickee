@@ -26,11 +26,7 @@
     "redux": "^4.0.5"
   },
   "scripts": {
-<<<<<<< HEAD
-    "start": "node server.js",
-=======
     "start": "react-scripts start",
->>>>>>> localMaster
     "server": "nodemon server",
     "dev": " concurrently \"nodemon server\" \"react-scripts start\" ",
     "build": "react-scripts build",
@@ -54,12 +50,7 @@
   },
   "homepage": "./",
   "devDependencies": {
-<<<<<<< HEAD
-    "nodemon": "^2.0.4"
-  }
-=======
     "nodemon": "^2.0.2"
   },
   "proxy": "http://localhost:5000"
->>>>>>> localMaster
 }
