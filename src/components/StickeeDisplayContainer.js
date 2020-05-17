@@ -1,5 +1,6 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
+import path from '../pathVar'
 
 class StickeeDisplayContainer extends React.Component {
   // ***** WORKS *****
@@ -17,9 +18,9 @@ class StickeeDisplayContainer extends React.Component {
 
   componentDidMount() {
     console.log("authorization", document.cookie);
-    let path = window.location.pathname.split("/");
-    let id = parseInt(path[path.length - 1]);
-    this.fetchNotesOnLogin(`http://localhost:8000/stickee/${id}`, {
+    let pathName = window.location.pathname.split("/");
+    let id = parseInt(pathName[pathName.length - 1]);
+    this.fetchNotesOnLogin(`${path}/stickee/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +32,7 @@ class StickeeDisplayContainer extends React.Component {
   removeStickee = async (e) => {
     try {
       const id = parseInt(e.target.id);
-      const response = await fetch("http://localhost:8000/stickee/", {
+      const response = await fetch(`${path}/stickee`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

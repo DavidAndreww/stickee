@@ -9,7 +9,6 @@ const { handleSQLError } = require("../sql/error");
 // @route   POST /
 const userLogin = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email, password)
 
   pool.query(
     "SELECT * FROM users WHERE email = '" + email + "' ",
