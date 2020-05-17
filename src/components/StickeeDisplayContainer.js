@@ -1,6 +1,6 @@
 import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
-import path from '../pathVar'
+import path from "../pathVar";
 
 class StickeeDisplayContainer extends React.Component {
   // ***** WORKS *****
@@ -9,7 +9,6 @@ class StickeeDisplayContainer extends React.Component {
       const response = await fetch(path, payload);
       const json = await response.json();
       let data = [json][0].results;
-      console.log(data)
       this.props.getNotes(data);
       this.props.setNoteId(json.next_note_id);
     } catch (err) {
@@ -18,15 +17,13 @@ class StickeeDisplayContainer extends React.Component {
   };
 
   componentDidMount() {
-    console.log('cookie passed through redux: ',this.props.cookie);
-    let pathName = window.location.pathname.split("/");
-    let id = parseInt(pathName[pathName.length - 1]);
+    console.log("cookie passed through redux: ", this.props.cookie);
     this.fetchNotesOnLogin(`${path}/stickee/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": this.props.cookie
-    },
+        Authorization: this.props.cookie,
+      },
     });
   }
 
@@ -37,7 +34,7 @@ class StickeeDisplayContainer extends React.Component {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": this.props.cookie,
+          Authorization: this.props.cookie,
         },
         body: JSON.stringify({
           note_id: id,

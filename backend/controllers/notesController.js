@@ -6,8 +6,6 @@ const { handleSQLError } = require("../sql/error");
 // @desc    gets all stickee note entries
 // @route   GET /stickee
 const getNotes = (req, res, next) => {
-  // let userId = req.params.id;
-  // is it better to use the decoded id from JWT.verify?
   let userId = req.user.userData.id
   pool.query(
     "SELECT note_id, note_message, note_type FROM notes WHERE notes.user_id = " +
