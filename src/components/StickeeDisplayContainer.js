@@ -17,7 +17,7 @@ class StickeeDisplayContainer extends React.Component {
   };
 
   componentDidMount() {
-    console.log("cookie to make GET request", document.cookie);
+    console.log("cookie to make GET request", document.cookie.split(';'));
     let pathName = window.location.pathname.split("/");
     let id = parseInt(pathName[pathName.length - 1]);
     this.fetchNotesOnLogin(`${path}/stickee/${id}`, {

@@ -6,7 +6,8 @@ import AddStickeeFormContainer from '../components/AddStickeeFormContainer';
 const mapStateToProps = (state) => {
   return {
     note_id: state.note_id,
-    user_id: state.user_id
+    user_id: state.user_id,
+    cookie: state.cookie
   }
 }
 

@@ -5,7 +5,8 @@ import StickeeDisplayContainer from '../components/StickeeDisplayContainer'
 const mapStateToProps = (state) => {
   return {
     notes: state.notes,
-    user_id: state.user_id
+    user_id: state.user_id,
+    cookie: state.cookie
   }
 }
 

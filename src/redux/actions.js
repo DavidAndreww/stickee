@@ -1,3 +1,10 @@
+const setCookie = (cookie) => {
+  return {
+    type: "SET_COOKIE",
+    value: cookie
+  }
+}
+
 const setUserId = (user_id) => {
   return {
     type: "SET_USER_ID",
@@ -45,4 +52,4 @@ const logOut = () => {
   };
 };
 
-export { setUserId, setNoteId, getNotes, addNote, deleteNote, logIn, logOut };
+export { setUserId, setNoteId, getNotes, addNote, deleteNote, logIn, logOut, setCookie };

@@ -1,5 +1,14 @@
 import { combineReducers } from "redux";
 
+const cookie = (state = null, action) => {
+  switch (action.type) {
+    case "SET_COOKIE":
+      return action.value;
+    default:
+      return state;
+  }
+};
+
 const loggedIn = (state = false, action) => {
   switch (action.type) {
     case "LOG_OUT":
@@ -46,4 +55,4 @@ const notes = (state = [], action) => {
   }
 };
 
-export default combineReducers({ loggedIn, user_id, note_id, notes });
+export default combineReducers({ loggedIn, user_id, note_id, notes, cookie });
