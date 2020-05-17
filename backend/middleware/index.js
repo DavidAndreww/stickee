@@ -9,6 +9,7 @@ const authenticate = (req, res, next) => {
     let decoded = jwt.verify(token, "secret");
     console.log('Validated:', decoded)
     req.user = decoded
+    console.log(req.user)
     return next();
   } catch {
     res.send("1Not Authorized");

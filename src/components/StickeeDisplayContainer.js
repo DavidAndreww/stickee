@@ -9,6 +9,7 @@ class StickeeDisplayContainer extends React.Component {
       const response = await fetch(path, payload);
       const json = await response.json();
       let data = [json][0].results;
+      console.log(data)
       this.props.getNotes(data);
       this.props.setNoteId(json.next_note_id);
     } catch (err) {
@@ -20,7 +21,7 @@ class StickeeDisplayContainer extends React.Component {
     console.log('cookie passed through redux: ',this.props.cookie);
     let pathName = window.location.pathname.split("/");
     let id = parseInt(pathName[pathName.length - 1]);
-    this.fetchNotesOnLogin(`${path}/stickee/${id}`, {
+    this.fetchNotesOnLogin(`${path}/stickee/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
