@@ -32,7 +32,7 @@ class AuthFormContainer extends React.Component {
       // prevents default form action
       e.preventDefault();
       // async fetch requeset with user email and password
-      const response = await fetch(`${path}/api/`, {
+      const response = await fetch(`${path}/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
