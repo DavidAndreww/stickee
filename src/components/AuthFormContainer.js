@@ -42,12 +42,12 @@ class AuthFormContainer extends React.Component {
       });
       // server response: contains jwebtoken, user data object {id, email, _password}
       const json = await response.json()
-      console.log('Json response',json)
+      console.log('JWT on login: ',json.token)
       if(json.token === undefined){
         window.alert('Invalid Password')
       } 
       if (json.token !== undefined) {
-        document.cookie = `token=${json.token}`;
+        document.cookie = `authCookie=${json.token}`;
         this.props.logIn();
         this.props.setUserId(json.user.id);
         this.props.history.push(`/stickee/${json.user.id}`);
