@@ -54,6 +54,7 @@ class AuthFormContainer extends React.Component {
     } catch(err){
       window.alert(`Unexpected error: ${err}`)
     }
+    console.log('log test')
   };
 
   // sends data to *newUserSignup router 
