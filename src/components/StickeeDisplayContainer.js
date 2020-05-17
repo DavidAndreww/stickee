@@ -20,7 +20,7 @@ class StickeeDisplayContainer extends React.Component {
     console.log('cookie passed through redux: ',this.props.cookie);
     let pathName = window.location.pathname.split("/");
     let id = parseInt(pathName[pathName.length - 1]);
-    this.fetchNotesOnLogin(`/stickee/${id}`, {
+    this.fetchNotesOnLogin(`${path}/stickee/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
