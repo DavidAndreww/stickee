@@ -64,7 +64,7 @@ class AuthFormContainer extends React.Component {
       // prevents default form action
       e.preventDefault();
       // async fetch request with user email, password
-      const response = await fetch(`${path}/api/signup`, {
+      const response = await fetch(`${path}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
