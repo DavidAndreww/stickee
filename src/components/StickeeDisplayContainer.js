@@ -17,14 +17,14 @@ class StickeeDisplayContainer extends React.Component {
   };
 
   componentDidMount() {
-    console.log("cookie to make GET request", document.cookie.split(';'));
+    console.log('cookie passed through redux: ',this.props.cookie);
     let pathName = window.location.pathname.split("/");
     let id = parseInt(pathName[pathName.length - 1]);
     this.fetchNotesOnLogin(`${path}/stickee/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": document.cookie.split('=')[1]
+        "Authorization": this.props.cookie
     },
     });
   }
@@ -36,7 +36,7 @@ class StickeeDisplayContainer extends React.Component {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: document.cookie,
+          "Authorization": this.props.cookie,
         },
         body: JSON.stringify({
           note_id: id,

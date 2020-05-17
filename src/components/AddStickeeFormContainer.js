@@ -61,7 +61,7 @@ class AddStickeeFormContainer extends React.Component {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
-        "Authorization": document.cookie
+        "Authorization": this.props.cookie
     },
       body: JSON.stringify({
         newNote: this.createNewStickeeObject(),

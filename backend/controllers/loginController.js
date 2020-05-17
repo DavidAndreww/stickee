@@ -29,7 +29,7 @@ const userLogin = (req, res, next) => {
 
           const token = jwt.sign({
             userData
-          }, 'secret', { expiresIn: 60*20 });
+          }, 'secret', { expiresIn: 60*10 });
 
           return res.status(201).json({
             message: "Logged In",
