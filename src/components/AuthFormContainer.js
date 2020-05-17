@@ -37,7 +37,7 @@ class AuthFormContainer extends React.Component {
         body: JSON.stringify({
           email: this.state.email,
           password: this.state.password,
-        }),
+        })
       });
       // server response: contains jwebtoken, user data object {id, email, _password}
       const json = await response.json()
