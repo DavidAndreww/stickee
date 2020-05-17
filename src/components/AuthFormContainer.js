@@ -40,7 +40,6 @@ class AuthFormContainer extends React.Component {
           password: this.state.password,
         }),
       });
-      console.log(response);
       // server response: contains jwebtoken, user data object {id, email, _password}
       const json = await response.json()
       console.log('Json response',json)

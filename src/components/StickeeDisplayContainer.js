@@ -17,10 +17,10 @@ class StickeeDisplayContainer extends React.Component {
   };
 
   componentDidMount() {
-    console.log("authorization", document.cookie);
+    console.log("cookie to make GET request", document.cookie);
     let pathName = window.location.pathname.split("/");
     let id = parseInt(pathName[pathName.length - 1]);
-    this.fetchNotesOnLogin(`${path}/api/stickee/${id}`, {
+    this.fetchNotesOnLogin(`${path}/stickee/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
