@@ -2,30 +2,29 @@ import React from "react";
 import StickeeDisplayComponent from "./StickeeDisplayComponent";
 
 class StickeeDisplayContainer extends React.Component {
-  
   // ***** WORKS *****
   fetchNotesOnLogin = async function (path, payload) {
-    try {const response = await fetch(path, payload);
-    const json = await response.json();
-    let data = [json][0].results;
-    this.props.getNotes(data)
-    this.props.setNoteId(json.next_note_id)
-    }
-    catch (err) {
-      window.alert(`Unexpected error while fetching data: ${err}`)
+    try {
+      const response = await fetch(path, payload);
+      const json = await response.json();
+      let data = [json][0].results;
+      this.props.getNotes(data);
+      this.props.setNoteId(json.next_note_id);
+    } catch (err) {
+      window.alert(`Unexpected error while fetching data: ${err}`);
     }
   };
-  
+
   componentDidMount() {
-    console.log('authorization', document.cookie)
-    let path = window.location.pathname.split('/')
-    let id = parseInt(path[path.length - 1])
+    console.log("authorization", document.cookie);
+    let path = window.location.pathname.split("/");
+    let id = parseInt(path[path.length - 1]);
     this.fetchNotesOnLogin(`/stickee/${id}`, {
       method: "GET",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        "Authorization": document.cookie
-    },
+        Authorization: document.cookie,
+      },
     });
   }
 
@@ -34,19 +33,19 @@ class StickeeDisplayContainer extends React.Component {
       const id = parseInt(e.target.id);
       const response = await fetch("/stickee/", {
         method: "DELETE",
-        headers: { 
+        headers: {
           "Content-Type": "application/json",
-          'Authorization': document.cookie
-      },
+          Authorization: document.cookie,
+        },
         body: JSON.stringify({
           note_id: id,
           user_id: this.props.user_id,
         }),
       });
-      const json = await response.json()
-      this.props.deleteNote(id)
-    } catch (err){
-      window.alert(`Unexpected error: ${err}`)
+      const json = await response.json();
+      this.props.deleteNote(id);
+    } catch (err) {
+      window.alert(`Unexpected error: ${err}`);
     }
   };
 
@@ -60,4 +59,4 @@ class StickeeDisplayContainer extends React.Component {
   }
 }
 
-export default StickeeDisplayContainer
+export default StickeeDisplayContainer;
