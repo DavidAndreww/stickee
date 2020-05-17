@@ -1,17 +1,14 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const notesRouter = require("./backend/routes/notesRouter");
+const loginRouter = require("./backend/routes/loginRouter");
 const path = require("path");
+const PORT = process.env.PORT || 8000;
 
 dotenv.config({ path: "./backend/config/config.env" });
 
 app.use(express.json());
-
-const notesRouter = require("./backend/routes/notesRouter");
-const loginRouter = require("./backend/routes/loginRouter");
-
-app.use("/", loginRouter);
-app.use("/stickee", notesRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("build"));
@@ -20,7 +17,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = process.env.PORT || 8000;
+app.use("/", loginRouter);
+app.use("/stickee", notesRouter);
+
 
 app.listen(PORT, () => {
   console.log(
