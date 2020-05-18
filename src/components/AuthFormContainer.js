@@ -1,6 +1,7 @@
 import React from "react";
 import AuthFormComponent from "./AuthFormComponent";
 import path from "../pathVar";
+import { verifyEmailCredentials } from "../helperFunctions";
 
 class AuthFormContainer extends React.Component {
   state = {
@@ -41,13 +42,13 @@ class AuthFormContainer extends React.Component {
         }),
       });
       // server response: contains jwebtoken, user data object {id, email, _password}
-      const json = await response.json()
-      console.log('JWT on login: ',json.token)
-      if(json.token === undefined){
-        window.alert('Invalid Password')
-      } 
+      const json = await response.json();
+      console.log("JWT on login: ", json.token);
+      if (json.token === undefined) {
+        window.alert("Invalid Password");
+      }
       if (json.token !== undefined) {
-        this.props.setCookie(json.token)
+        this.props.setCookie(json.token);
         this.props.logIn();
         this.props.setUserId(json.user.id);
         this.props.history.push(`/stickee/${json.user.id}`);
@@ -59,27 +60,29 @@ class AuthFormContainer extends React.Component {
 
   // sends data to *newUserSignup router
   handleSignupButtonClick = async (e) => {
-    try {
-      // prevents default form action
-      e.preventDefault();
-      // async fetch request with user email, password
-      const response = await fetch(`${path}/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password,
-        }),
-      });
+    e.preventDefault();
+    if (verifyEmailCredentials(this.state.email)) {
+      try {
+        // prevents default form action
+        // async fetch request with user email, password
+        const response = await fetch(`${path}/signup`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+          }),
+        });
 
-      const json = await response.json();
-      if (json.new_user.id) {
-        this.props.setUserId(json.new_user.id);
-        window.alert("Success! Please log in to continue");
-        this.toggleNewUserView();
+        const json = await response.json();
+        if (json.new_user.id) {
+          this.props.setUserId(json.new_user.id);
+          window.alert("Success! Please log in to continue");
+          this.toggleNewUserView();
+        }
+      } catch (err) {
+        window.alert(`Unexpected error: ${err}`);
       }
-    } catch (err) {
-      window.alert(`Unexpected error: ${err}`);
     }
   };
 
