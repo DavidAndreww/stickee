@@ -34,11 +34,11 @@ const AuthFormComponent = ({
           label="password"
           type="text"
         />
-        <Button style={{ marginBottom: "2px" }} type="submit" variant="contained" color="primary">
+        <Button style={{ marginBottom: "2px", backgroundColor: "#FCA311" }} type="submit" variant="contained">
           {isNewUser ? "Sign Up" : "Log In"}
         </Button>
       </form>
-      <Button style={{ width: "100%" }} onClick={toggleNewUserView} color="secondary" variant="contained">
+      <Button style={{ width: "100%", color: 'black', backgroundColor: '#E5E5E5' }} onClick={toggleNewUserView} color="secondary" variant="contained">
         {isNewUser ? "Back To Login" : "Create User"}
       </Button>
     </Container>
