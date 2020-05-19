@@ -150,9 +150,18 @@ body {
 .add-stickee-dialog-component {
   text-align: center;
 }
+@keyframes dialog-box {
+  0%{transform: scale(0)}
+  100%{transform: scale(1)}
+}
+.MuiPaper-root {
+  animation-name: dialog-box;
+  animation-duration: .33s;
+}
 .add-stickee-form-wrap {
   height: 200px;
   display: flex;
+  
 }
 .form-left-side,
 .form-right-side {
@@ -171,4 +180,7 @@ body {
 }
 .stickee-form-back-btn {
   width: 100%;
+}
+@keyframes shrinkToClose {
+  
 }
