@@ -3,7 +3,6 @@ const app = express();
 const dotenv = require("dotenv");
 const notesRouter = require("./backend/routes/notesRouter");
 const loginRouter = require("./backend/routes/loginRouter");
-const path = require("path");
 const cors = require("cors");
 const PORT = process.env.PORT || 5000;
 
