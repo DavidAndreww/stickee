@@ -11,7 +11,7 @@ class Connection {
         user: 'root',
         password: 'st!ck33',
         database: 'admin',
-        port: 3306
+        // port: 3306
       })
 
       return this.pool
