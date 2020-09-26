@@ -45,8 +45,8 @@ const notes = (state = [], action) => {
     case 'ADD_NOTE':
       return [...state, action.value]
     case 'DELETE_NOTE':
-      let currentList = [...state]
-      let newState = currentList.filter((note) => note.note_id !== action.value)
+      const currentList = [...state]
+      const newState = currentList.filter((note) => note.note_id !== action.value)
       return newState
     default:
       return state

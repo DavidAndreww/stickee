@@ -71,7 +71,7 @@ const newUserSignup = (req, res, next) => {
         }
         return res.status(201).json({
           message: 'User Successfully Created',
-          new_user: { email: email, password: password, id: results.insertId },
+          new_user: { email: email, password: password, id: results.insertId }
         })
       }
     )

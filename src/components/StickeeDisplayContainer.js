@@ -3,20 +3,22 @@ import StickeeDisplayComponent from "./StickeeDisplayComponent";
 import path from "../pathVar";
 
 class StickeeDisplayContainer extends React.Component {
+  // fetch request, called in componentDidMount
   fetchNotesOnLogin = async function (path, payload) {
     try {
       const response = await fetch(path, payload);
       const json = await response.json();
       let data = [json][0].results;
+      // updates notes state in Redux with data from DB
       this.props.getNotes(data);
+      // updates note_id in Redux to increment next note ID appropriately
       this.props.setNoteId(json.next_note_id);
     } catch (err) {
       window.alert(`Unexpected error while fetching data: ${err}`);
     }
   };
-
+  // on mount, runs GET request to pull notes data from DB
   componentDidMount() {
-    console.log("cookie passed through redux: ", this.props.cookie);
     this.fetchNotesOnLogin(`${path}/stickee/`, {
       method: "GET",
       headers: {
@@ -41,6 +43,7 @@ class StickeeDisplayContainer extends React.Component {
         }),
       });
       const json = await response.json();
+      // updates Redux state after DB is updated
       this.props.deleteNote(id);
     } catch (err) {
       window.alert(`Unexpected error: ${err}`);
