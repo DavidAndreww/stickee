@@ -4,4 +4,4 @@
 // production path
 const path = 'https://getstickee.herokuapp.com'
 
-export default path;
+export default path
