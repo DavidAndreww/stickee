@@ -1,7 +1,9 @@
 import React from 'react'
 import StickeeNoteComponent from './StickeeNoteComponent'
 
+// wrapper for 4 stickee fields
 const StickeeDisplayComponent = ({ notes, removeStickee }) => {
+  // defines each individual display field
   const IndividualPriorityField = ({ notes, priority }) => {
     // filters collection of users notes into 4 categories based on priority type
     const array = notes.filter((note) => note.note_type === priority)

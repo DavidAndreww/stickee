@@ -6,16 +6,14 @@ const authenticate = (req, res, next) => {
   const token = req.headers.authorization
   console.log('new Token:', token)
   try {
-    let decoded = jwt.verify(token, 'secret')
+    const decoded = jwt.verify(token, 'secret')
     console.log('Validated:', decoded)
     req.user = decoded
     console.log(req.user)
     return next()
   } catch {
-    res.send('1Not Authorized')
+    res.send('Not Authorized')
   }
 }
 
-module.exports = {
-  authenticate
-}
+module.exports = { authenticate }

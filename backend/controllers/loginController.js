@@ -51,11 +51,12 @@ const userLogin = (req, res, next) => {
 // @desc    adds new user info to db
 // @route   POST /signup
 const newUserSignup = (req, res, next) => {
-  let { email, password } = req.body
+  const { email, password } = req.body
 
   const saltRounds = 10
 
   bcrypt.hash(password, saltRounds, function (err, hash) {
+    if (err) return handleSQLError(res, err)
     pool.query(
       "INSERT INTO users (email, _password) VALUES ('" +
         email +
