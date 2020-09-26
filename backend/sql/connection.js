@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const colors = require('colors')
 
 class Connection {
-  constructor() {
+  constructor () {
     if (!this.pool) {
       console.log('creating MySQL connection...'.blue.bold)
       this.pool = mysql.createPool({
@@ -23,4 +23,4 @@ class Connection {
 
 const instance = new Connection()
 
-module.exports = instance;
+module.exports = instance
