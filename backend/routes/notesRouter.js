@@ -9,4 +9,4 @@ router.post('/add', authenticate, addNotes)
 
 router.delete('/', authenticate, deleteNotes)
 
-module.exports = router;
+module.exports = router

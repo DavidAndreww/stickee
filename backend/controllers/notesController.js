@@ -27,7 +27,7 @@ const getNotes = (req, res, next) => {
 // @route    POST /stickee/add
 const addNotes = (req, res) => {
   const { user_id, note_id, note_message, note_type } = req.body.newNote
-  
+
   pool.query(
     "INSERT INTO notes (user_id, note_id, note_message, note_type) VALUES (" + user_id + ", " + note_id + ", '" + note_message + "', '" + note_type +"')",
     (err, results) => {

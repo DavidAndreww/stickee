@@ -14,7 +14,7 @@ class AuthFormContainer extends React.Component {
     state[e.target.name] = e.target.value;
     this.setState(state);
   };
-
+  // toggle login or signup functionality of login/create user buttons
   toggleNewUserView = () => {
     const isNewUser = !this.state.isNewUser;
     if (isNewUser) {
@@ -47,11 +47,11 @@ class AuthFormContainer extends React.Component {
         window.alert('Invalid Password')
       } 
       if (json.token !== undefined) {
-        // stores cookie to allow for login to protected route
+        // stores cookie in Redux to allow for login to protected route
         this.props.setCookie(json.token)
         // used to toggle logOut button in header.js
         this.props.logIn();
-        // used id provides reference to pull user data from database
+        // user id passed into URL path and used in GET request to pull data when new componenet mounts
         this.props.setUserId(json.user.id);
         this.props.history.push(`/stickee/${json.user.id}`);
       }
