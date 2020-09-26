@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
+// used to store cookie once user is logged in and validated
 const cookie = (state = null, action) => {
   switch (action.type) {
     case 'SET_COOKIE':
@@ -9,6 +10,7 @@ const cookie = (state = null, action) => {
   }
 }
 
+// truthy falsy value to dynamically render logout button in Header.js
 const loggedIn = (state = false, action) => {
   switch (action.type) {
     case 'LOG_OUT':
@@ -20,6 +22,7 @@ const loggedIn = (state = false, action) => {
   }
 }
 
+// set after user logs in, used to pull note data during component mounting in StickeeDisplayContainer.js
 const user_id = (state = 1, action) => {
   switch (action.type) {
     case 'SET_USER_ID':
@@ -29,6 +32,7 @@ const user_id = (state = 1, action) => {
   }
 }
 
+// used in AddStickeeFormContainer.js to set proper note_id
 const note_id = (state = 1, action) => {
   switch (action.type) {
     case 'SET_NOTE_ID':
@@ -38,6 +42,7 @@ const note_id = (state = 1, action) => {
   }
 }
 
+// updates note state to get, add and delete notes
 const notes = (state = [], action) => {
   switch (action.type) {
     case 'GET_NOTES':
