@@ -13,9 +13,10 @@ class AddStickeeFormContainer extends React.Component {
     note_id: this.props.note_id,
     user_id: this.props.user_id
   }
-
+  // opens/closes dialog form to add new stickee 
   toggleAddStickeeForm = (backbtn = null) => {
     let stickeeFormOpen = !this.state.stickeeFormOpen;
+    // if back button was clicked to toggle form off, reset form fields to default values
     if (backbtn) this.setState({message: '', important: true, urgent: true})
     this.setState({ stickeeFormOpen });
   };
@@ -34,6 +35,7 @@ class AddStickeeFormContainer extends React.Component {
     this.setState({ message: e.target.value });
   };
 
+  // function that returns object with values for new stickee form. called in body of fetch request
   createNewStickeeObject = () => {
     const message = this.state.message;
     const urgent = this.state.urgent;
@@ -56,7 +58,7 @@ class AddStickeeFormContainer extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    // sends new note object to database
+    // POST new note object to database
     const response = await fetch(`${path}/stickee/add`, {
       method: "POST",
       headers: { 
