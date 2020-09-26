@@ -40,7 +40,7 @@ const userLogin = (req, res, next) => {
           return res.status(201).json({
             message: 'Logged In',
             user: userData,
-            token,
+            token
           })
         }
       })

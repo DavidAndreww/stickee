@@ -47,8 +47,11 @@ class AuthFormContainer extends React.Component {
         window.alert('Invalid Password')
       } 
       if (json.token !== undefined) {
+        // stores cookie to allow for login to protected route
         this.props.setCookie(json.token)
+        // used to toggle logOut button in header.js
         this.props.logIn();
+        // used id provides reference to pull user data from database
         this.props.setUserId(json.user.id);
         this.props.history.push(`/stickee/${json.user.id}`);
       }

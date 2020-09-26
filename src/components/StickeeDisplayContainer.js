@@ -3,7 +3,6 @@ import StickeeDisplayComponent from "./StickeeDisplayComponent";
 import path from "../pathVar";
 
 class StickeeDisplayContainer extends React.Component {
-  // ***** WORKS *****
   fetchNotesOnLogin = async function (path, payload) {
     try {
       const response = await fetch(path, payload);
