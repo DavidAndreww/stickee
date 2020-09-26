@@ -1,7 +1,6 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { addNote, setNoteId } from '../redux/actions'
-import AddStickeeFormContainer from '../components/AddStickeeFormContainer';
-
+import AddStickeeFormContainer from '../components/AddStickeeFormContainer'
 
 const mapStateToProps = (state) => {
   return {
