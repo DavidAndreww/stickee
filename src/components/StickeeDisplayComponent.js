@@ -3,6 +3,7 @@ import StickeeNoteComponent from './StickeeNoteComponent'
 
 const StickeeDisplayComponent = ({ notes, removeStickee }) => {
   const IndividualPriorityField = ({ notes, priority }) => {
+    // filters collection of users notes into 4 categories based on priority type
     const array = notes.filter((note) => note.note_type === priority)
     return (
       <div className='individual-priority-display-field'>
