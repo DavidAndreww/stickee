@@ -1,21 +1,21 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import Router from "./Router";
-import Header from './containers/HeaderContainer';
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import Router from './Router'
+import Header from './containers/HeaderContainer'
 
-function App() {
+function App () {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <div className="app">
+        <div className='app'>
           <Header />
           <Router />
         </div>
       </BrowserRouter>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App
