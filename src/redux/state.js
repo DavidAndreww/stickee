@@ -4,6 +4,6 @@ const state = {
   notes: [],
   loggedIn: false,
   cookie: null
-};
+}
 
-export default state;
+export default state
