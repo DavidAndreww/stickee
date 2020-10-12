@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, TextField, Container } from "@material-ui/core";
+import React from 'react'
+import { Button, TextField, Container } from '@material-ui/core'
 
 const AuthFormComponent = ({
   handleLoginButtonClick,
@@ -11,38 +11,55 @@ const AuthFormComponent = ({
   isNewUser,
 }) => {
   return (
-    <Container className="landing-page-component" maxWidth="xs">
+    <Container className='landing-page-component' maxWidth='xs'>
       <form
         onSubmit={isNewUser ? handleSignupButtonClick : handleLoginButtonClick}
-        className="login-form"
+        className='login-form'
       >
         <TextField
-          style={{ backgroundColor: "white", borderRadius: "5px", marginBottom: "2px" }}
+          style={{
+            backgroundColor: 'white',
+            borderRadius: '5px',
+            marginBottom: '2px',
+          }}
           required
           onChange={handleInputChange}
           value={email}
-          name="email"
-          label="email"
-          type="text"
+          name='email'
+          label='email'
+          type='text'
         />
         <TextField
-          style={{ backgroundColor: "white", borderRadius: "5px", marginBottom: "15px" }}
+          style={{
+            backgroundColor: 'white',
+            borderRadius: '5px',
+            marginBottom: '15px',
+          }}
           required
           onChange={handleInputChange}
           value={password}
-          name="password"
-          label="password"
-          type="text"
+          name='password'
+          label='password'
+          type='text'
         />
-        <Button style={{ marginBottom: "2px", backgroundColor: "#FCA311" }} type="submit" variant="contained">
-          {isNewUser ? "Sign Up" : "Log In"}
+        <Button
+          style={{ marginBottom: '2px', backgroundColor: '#FCA311' }}
+          type='submit'
+          variant='contained'
+        >
+          {isNewUser ? 'Sign Up' : 'Log In'}
         </Button>
       </form>
-      <Button style={{ width: "100%", color: 'black', backgroundColor: '#E5E5E5' }} onClick={toggleNewUserView} color="secondary" variant="contained">
-        {isNewUser ? "Back To Login" : "Create User"}
+      <Button
+        style={{ width: '100%', color: 'black', backgroundColor: '#E5E5E5' }}
+        onClick={toggleNewUserView}
+        color='secondary'
+        variant='contained'
+      >
+        {isNewUser ? 'Back To Login' : 'Create User'}
       </Button>
     </Container>
-  );
-};
+  )
+}
 
-export default AuthFormComponent;
+export default AuthFormComponent
