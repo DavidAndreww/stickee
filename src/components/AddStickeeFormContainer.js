@@ -35,7 +35,6 @@ class AddStickeeFormContainer extends React.Component {
   };
 
   createNewStickeeObject = () => {
-    const message = this.state.message;
     const urgent = this.state.urgent;
     const important = this.state.important;
     let type;
@@ -44,13 +43,12 @@ class AddStickeeFormContainer extends React.Component {
     important && !urgent && (type = "plan");
     !important && urgent && (type = "delegate");
     !important && !urgent && (type = "delete");
-
     
     return {
       user_id: this.state.user_id,
       note_id: this.props.note_id,
+      note_message: this.state.message,
       note_type: type,
-      note_message: message,
     };
   };
 
